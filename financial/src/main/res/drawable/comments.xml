@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!-- 存放真实的位图文件, 也可以存放Drawable对象及子类对象的XML文件; -->
+
+</selector>

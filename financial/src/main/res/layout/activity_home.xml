@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <!-- 顶部bar -->
+
+
+    <!-- <include layout="@layout/bar" /> -->
+
+    <view
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/home_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.0"
+        class="com.financial.android.view.CustomViewPager" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:background="#dbdbdb" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@null" >
+
+        <RadioGroup
+            android:id="@+id/main_radio"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom"
+            android:background="#f0f0f0"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/rb_home"
+                style="@style/MMTabButton"
+                android:checked="true"
+                android:drawableTop="@drawable/ic_home_selector"
+                android:text="@string/home" />
+
+            <RadioButton
+                android:id="@+id/rb_projects"
+                style="@style/MMTabButton"
+                android:drawableTop="@drawable/ic_projects_selector"
+                android:text="@string/invest" />
+
+            <RadioButton
+                android:id="@+id/rb_account"
+                style="@style/MMTabButton"
+                android:drawableTop="@drawable/ic_account_selector"
+                android:text="@string/account" />
+
+
+        </RadioGroup>
+
+        <!-- 气泡icon -->
+
+        <RelativeLayout
+            android:id="@+id/notice_rl_bubble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="42dp"
+            android:layout_marginTop="6dp"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/notice_iv_bubble"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/home_bubble" />
+
+            <!-- 气泡提示文字 -->
+
+            <TextView
+                android:id="@+id/notice_tv_bubble"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/color_main"
+                android:textSize="@dimen/text_size_09" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>
