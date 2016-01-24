@@ -113,8 +113,7 @@ public class HomeActivity extends BaseActivity {
 		fragmentLists.add(accountFragment);
 		// viewPager 设置适配器
 //		viewPager.setOffscreenPageLimit(4); //设置缓存界面
-		viewPager.setAdapter(new FXFragmentPagerAdapter(
-				getSupportFragmentManager(), fragmentLists));
+		viewPager.setAdapter(new FXFragmentPagerAdapter(getSupportFragmentManager(), fragmentLists));
 		// 设置当前页
 		viewPager.setCurrentItem(0);
 		// viewpager页面切换监听
