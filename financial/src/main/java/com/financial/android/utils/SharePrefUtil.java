@@ -238,7 +238,6 @@ public class SharePrefUtil {
 	 * 
 	 * @param context
 	 * @param key
-	 * @param defValue
 	 * @return
 	 */
 	public static Object getObj(Context context, String key) {

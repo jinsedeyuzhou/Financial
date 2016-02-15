@@ -47,6 +47,12 @@
         <activity android:name=".activity.account.MessageActivity"></activity>
         <activity android:name=".activity.account.WalletActivity"></activity>
         <!-- projects -->
+        <activity android:name=".activity.projects.ProductActivity"/>
+        <!--Test activity-->
+        <activity android:name=".activity.test.VerticalViewPagerActivity"/>
+        <activity android:name=".activity.test.VerticalViewActivity"/>
+        <!--help-->
+        <activity android:name=".activity.account.HelpActivity"/>
     </application>
 
 </manifest>

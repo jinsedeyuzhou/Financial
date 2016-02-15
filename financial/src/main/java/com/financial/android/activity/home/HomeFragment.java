@@ -250,6 +250,7 @@ public class HomeFragment extends BaseFragment{
 	public void onPause() {
 		super.onPause();
 	}
+
 	class BannerPagerAdapter extends PagerAdapter implements OnPageChangeListener {
 		private LayoutInflater mInflater;
 		private List<String> imageUrlList;

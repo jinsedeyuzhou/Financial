@@ -60,7 +60,9 @@ public abstract class BaseActivity extends FragmentActivity implements
 	protected View loadingView;
 	// 加载失败的view,不一定用
 	protected LinearLayout loadfailView;
-	
+	private RelativeLayout bar_rl_visible;
+	private TextView titleTv;
+
 
 	public void setAllowFullScreen(boolean allowFullScreen) {
 		this.mAllowFullScreen = allowFullScreen;
@@ -105,20 +107,20 @@ public abstract class BaseActivity extends FragmentActivity implements
 	/**
 	 * 设置title标题
 	 */
-//	protected void initBar() {
-//		titleTv = (TextView) findViewById(R.id.bar_tv_title);
-//		
-//	}
+	protected void initTitleBar(String title,int visible1,int visible2) {
+		titleTv = (TextView) findViewById(R.id.bar_tv_title);
+
+	}
 
 	/**
 	 * 设置Titlebar的可见性
 	 * 
 	 * @param visible
 	 */
-//	protected void setTitleBarVisible(int visible) {
-//		bar_rl_visible = (RelativeLayout) findViewById(R.id.bar_rl_visible);
-//		bar_rl_visible.setVisibility(visible);
-//	}
+	protected void setTitleBarVisible(int visible) {
+		bar_rl_visible = (RelativeLayout) findViewById(R.id.bar_rl_visible);
+		bar_rl_visible.setVisibility(visible);
+	}
 
 	/**
 	 * 判断是否锁屏

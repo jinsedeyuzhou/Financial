@@ -6,45 +6,48 @@
 
     <include layout="@layout/bar" />
 
-    <LinearLayout
+    <RadioGroup
+        android:id="@+id/rg_projects"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_margin="5dp"
+        android:layout_height="@dimen/activity_margin_45"
         android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/Spinner1"
+        <RadioButton
+            android:id="@+id/rb_direct"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:checked="true"
+            android:text="直投项目"
+            android:textColor="@color/text_tab_color" />
 
-        <Spinner
-            android:id="@+id/Spinner2"
+        <RadioButton
+            android:id="@+id/rb_assignment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="转让项目"
+            android:textColor="@color/text_tab_color" />
 
-        <Spinner
-            android:id="@+id/Spinner3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-    </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
+
+    </RadioGroup>
+    <ImageView
+        android:id="@+id/iv_cursor"
+        android:layout_width="100dp"
         android:layout_height="3dp"
-        android:background="@color/gainsboro" />
-
-    <FrameLayout
+        android:background="@color/green"
+        />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/projects_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.markupartist.android.widget.PullToRefreshListView
-            android:id="@+id/pull_refresh_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </FrameLayout>
+    </android.support.v4.view.ViewPager>
 
 
 </LinearLayout>

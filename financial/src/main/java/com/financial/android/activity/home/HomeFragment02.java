@@ -2,7 +2,6 @@ package com.financial.android.activity.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,8 +18,12 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.financial.android.R;
+import com.financial.android.activity.account.HelpActivity;
 import com.financial.android.activity.account.SettingActivity;
 import com.financial.android.activity.other.WebViewActivity;
+import com.financial.android.activity.test.VerticalViewActivity;
+import com.financial.android.activity.test.VerticalViewPagerActivity;
+import com.financial.android.activity.projects.ProductActivity;
 import com.financial.android.adapter.GridViewItemAdapter;
 import com.financial.android.adapter.ImagePagerAdapter;
 import com.financial.android.base.BaseFragment;
@@ -30,17 +33,10 @@ import com.financial.android.view.CircleFlowIndicator;
 import com.financial.android.view.ViewFlow;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class HomeFragment02 extends BaseFragment{
 
@@ -75,6 +71,17 @@ public class HomeFragment02 extends BaseFragment{
 	// 点
 	@ViewInject(R.id.viewflowindic)
 	private CircleFlowIndicator mFlowIndicator;
+
+	//线性布局
+	@ViewInject(R.id.ll_asset1)
+	private LinearLayout ll_asset1;
+	@ViewInject(R.id.ll_bankcard1)
+	private LinearLayout ll_bankcard1;
+	@ViewInject(R.id.ll_invest1)
+	private LinearLayout ll_invest1;
+	@ViewInject(R.id.ll_message1)
+	private LinearLayout ll_message1;
+
 
 
 	private View view;
@@ -150,6 +157,13 @@ public class HomeFragment02 extends BaseFragment{
 
 		initBanner(imageUrlList);
 		initRollNotice();
+
+		ll_asset1.setOnClickListener(this);
+		ll_bankcard1.setOnClickListener(this);
+		ll_message1.setOnClickListener(this);
+		ll_invest1.setOnClickListener(this);
+
+
 		gridItemList=new ArrayList<GridViewItem>();//不能全局初始化
 		for(int i=0;i<imgIds.length;i++)
 		{
@@ -232,7 +246,22 @@ public class HomeFragment02 extends BaseFragment{
 				intent = new Intent(getActivity(), SettingActivity.class);
 				startActivity(intent);
 				break;
-
+			case R.id.ll_message1:
+				intent=new Intent(ct, ProductActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.ll_invest1:
+				intent=new Intent(ct, VerticalViewActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.ll_asset1:
+				intent=new Intent(ct, VerticalViewPagerActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.ll_bankcard1:
+				intent=new Intent(ct, HelpActivity.class);
+				startActivity(intent);
+				break;
 			default:
 				break;
 		}

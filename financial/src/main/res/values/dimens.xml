@@ -3,17 +3,17 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="activity_margin_1">60dp</dimen>
-    <dimen name="activity_margin_2">55dp</dimen>
-    <dimen name="activity_margin_3">50dp</dimen>
-    <dimen name="activity_margin_4">45dp</dimen>
-    <dimen name="activity_margin_5">40dp</dimen>
-    <dimen name="activity_margin_6">35dp</dimen>
-    <dimen name="activity_margin_7">30dp</dimen>
-    <dimen name="activity_margin_8">25dp</dimen>
-    <dimen name="activity_margin_9">20dp</dimen>
-    <dimen name="activity_margin_10">15dp</dimen>
-    <dimen name="activity_margin_11">10dp</dimen>
+    <dimen name="activity_margin_60">60dp</dimen>
+    <dimen name="activity_margin_55">55dp</dimen>
+    <dimen name="activity_margin_50">50dp</dimen>
+    <dimen name="activity_margin_45">45dp</dimen>
+    <dimen name="activity_margin_40">40dp</dimen>
+    <dimen name="activity_margin_35">35dp</dimen>
+    <dimen name="activity_margin_30">30dp</dimen>
+    <dimen name="activity_margin_25">25dp</dimen>
+    <dimen name="activity_margin_20">20dp</dimen>
+    <dimen name="activity_margin_15">15dp</dimen>
+    <dimen name="activity_margin_10">10dp</dimen>
 
     <!-- 字体 -->
     <!-- 尽量使用偶数数值 -->

@@ -25,3 +25,6 @@ proguard/
 
 # Log Files
 *.log
+androidPullToRefresh
+xUtilslib2614
+pulltorefresh
