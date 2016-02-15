@@ -28,3 +28,6 @@ proguard/
 androidPullToRefresh
 xUtilslib2614
 pulltorefresh
+.idea
+bank.iml
+/Financial.iml
