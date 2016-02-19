@@ -4,8 +4,8 @@
         android:radius="9dp"
         />
 	<size 
-	    android:width="45dp"
-	    android:height="200dp"
+	    android:width="200dp"
+	    android:height="48dp"
 	    />
 	<solid 
 	    android:color="#dc222d"

@@ -3,6 +3,7 @@ package com.financial.android.base;
 import com.financial.android.bean.AccessToken;
 import com.financial.android.bean.UserInfo;
 import com.financial.android.utils.SharePrefUtil;
+import com.financial.android.widget.LockPatternUtils;
 
 import android.app.Application;
 import android.content.Context;
@@ -23,6 +24,8 @@ public class FXApplication extends Application {
 	// 设备ID
 	private String deviceId;
 	private String system;
+
+	private LockPatternUtils mLockPatternUtils;
 
 	private AccessToken accessToken;
 	private UserInfo userInfo;
@@ -46,6 +49,7 @@ public class FXApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		application = this;
+		mLockPatternUtils = new LockPatternUtils(this);
 
 		// 获取系统id
 		TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
@@ -147,6 +151,8 @@ public class FXApplication extends Application {
 //					SharePrefUtil.KEY.USER_INFO, userInfo);
 //		}
 	}
-
+	public LockPatternUtils getLockPatternUtils() {
+		return mLockPatternUtils;
+	}
 	
 }

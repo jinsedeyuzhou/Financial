@@ -60,5 +60,9 @@
     <!-- banner -->
     <color name="transparent">#00000000</color>
     <color name="gray_bg">#fff0f0f0</color>
+    <!--geture-->
+    <color name="gesture_background">#ff303237</color>
+    <color name="color_hei_8">#00000000</color>
+    <drawable name="trans">@color/color_hei_8</drawable>
 
 </resources>

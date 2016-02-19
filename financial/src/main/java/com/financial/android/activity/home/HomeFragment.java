@@ -31,6 +31,7 @@ import android.widget.ViewFlipper;
 import com.financial.android.R;
 import com.financial.android.activity.account.SettingActivity;
 import com.financial.android.activity.other.WebViewActivity;
+import com.financial.android.activity.welcome.LockSetupActivity;
 import com.financial.android.adapter.GridViewItemAdapter;
 import com.financial.android.base.BaseFragment;
 import com.financial.android.bean.GridViewItem;
@@ -182,9 +183,11 @@ public class HomeFragment extends BaseFragment{
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				Toast.makeText(getActivity(), "position"+position, Toast.LENGTH_SHORT).show();
+				Intent intent=null;
 				switch (position) {
 				case 0:
-					
+					intent=new Intent(ct, LockSetupActivity.class);
+					startActivity(intent);
 					break;
 
 				default:

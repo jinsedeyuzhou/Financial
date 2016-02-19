@@ -35,6 +35,7 @@
         <activity android:name=".activity.welcome.LockSetupActivity"></activity>
         <activity android:name=".activity.welcome.LockActivity"></activity>
         <activity android:name=".activity.welcome.GuideViewActivity"></activity>
+        <activity android:name=".activity.welcome.GuideGesturePasswordActivity"/>
         <!-- login -->
         <activity android:name=".activity.login.LoginActivity"></activity>
         <activity android:name=".activity.login.RegisterActivity"></activity>
