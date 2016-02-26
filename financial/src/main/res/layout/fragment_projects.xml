@@ -10,6 +10,7 @@
         android:id="@+id/rg_projects"
         android:layout_width="match_parent"
         android:layout_height="@dimen/activity_margin_45"
+        android:background="#f6f6f6"
         android:orientation="horizontal">
 
         <RadioButton
@@ -22,7 +23,13 @@
             android:checked="true"
             android:text="直投项目"
             android:textColor="@color/text_tab_color" />
-
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:background="@color/gainsboro"
+            />
         <RadioButton
             android:id="@+id/rb_assignment"
             android:layout_width="0dp"
@@ -40,7 +47,7 @@
         android:id="@+id/iv_cursor"
         android:layout_width="100dp"
         android:layout_height="3dp"
-        android:background="@color/green"
+        android:background="@color/red"
         />
     <android.support.v4.view.ViewPager
         android:id="@+id/projects_viewpager"

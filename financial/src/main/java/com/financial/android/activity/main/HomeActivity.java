@@ -104,7 +104,7 @@ public class HomeActivity extends BaseActivity {
 	 */
 	private void initViewPager() {
 		HomeFragment02 homeFragment = new HomeFragment02();
-//		HomeFragment01 homeFragment = new HomeFragment01();
+//		HomeFragment homeFragment = new HomeFragment();
 		ProjectsFragment projectsFragment = new ProjectsFragment();
 		AccountFragment accountFragment = new AccountFragment();
 		fragmentLists = new ArrayList<Fragment>();
@@ -112,7 +112,7 @@ public class HomeActivity extends BaseActivity {
 		fragmentLists.add(projectsFragment);
 		fragmentLists.add(accountFragment);
 		// viewPager 设置适配器
-//		viewPager.setOffscreenPageLimit(4); //设置缓存界面
+//		viewPager.setOffscreenPageLimit(4); //设置缓存界面,默认为1，不可小于1
 		viewPager.setAdapter(new FXFragmentPagerAdapter(getSupportFragmentManager(), fragmentLists));
 		// 设置当前页
 		viewPager.setCurrentItem(0);
@@ -186,6 +186,7 @@ public class HomeActivity extends BaseActivity {
 
 	@Override
 	public void processClick(View v) {
+
 
 	}
 

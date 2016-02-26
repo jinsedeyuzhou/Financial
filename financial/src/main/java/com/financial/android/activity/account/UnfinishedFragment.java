@@ -17,7 +17,7 @@ public class UnfinishedFragment extends BaseFragment {
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
-        view = inflater.inflate(R.layout.frag_successful_order,container,false);
+        view = inflater.inflate(R.layout.frag_unfinished_order,container,false);
         return view;
     }
 

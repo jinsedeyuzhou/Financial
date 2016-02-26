@@ -29,8 +29,12 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.financial.android.R;
+import com.financial.android.activity.account.HelpActivity;
 import com.financial.android.activity.account.SettingActivity;
 import com.financial.android.activity.other.WebViewActivity;
+import com.financial.android.activity.projects.ProductActivity;
+import com.financial.android.activity.test.VerticalViewActivity;
+import com.financial.android.activity.test.VerticalViewPagerActivity;
 import com.financial.android.activity.welcome.LockSetupActivity;
 import com.financial.android.adapter.GridViewItemAdapter;
 import com.financial.android.base.BaseFragment;
@@ -41,6 +45,9 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+/**
+ * 不带滚动动画的也就是原点不滑动的效果
+ */
 public class HomeFragment extends BaseFragment{
 
 	@ViewInject(R.id.bar_tv_title)
@@ -221,19 +228,34 @@ public class HomeFragment extends BaseFragment{
 	protected void processClick(View v) {
 		Intent intent = null;
 		switch (v.getId()) {
-		// 左侧按钮
-		case R.id.bar_rl_left:
-			intent = new Intent(getActivity(), PositionActivity.class);
-			startActivityForResult(intent, 100);
-			break;
-		// 右侧按钮
-		case R.id.bar_rl_right:
-			intent = new Intent(getActivity(), SettingActivity.class);
-			startActivity(intent);
-			break;
-
-		default:
-			break;
+			// 左侧按钮
+			case R.id.bar_rl_left:
+				intent = new Intent(getActivity(), PositionActivity.class);
+				startActivityForResult(intent, 100);
+				break;
+			// 右侧按钮
+			case R.id.bar_rl_right:
+				intent = new Intent(getActivity(), SettingActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.ll_message1:
+				intent = new Intent(ct, ProductActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.ll_invest1:
+				intent = new Intent(ct, VerticalViewActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.ll_asset1:
+				intent = new Intent(ct, VerticalViewPagerActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.ll_bankcard1:
+				intent = new Intent(ct, HelpActivity.class);
+				startActivity(intent);
+				break;
+			default:
+				break;
 		}
 	}
 

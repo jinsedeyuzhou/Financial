@@ -47,11 +47,13 @@ public class WalletActivity extends BaseActivity {
 
     private ArrayList<Fragment> frags=null;
     private int indicatorWidth;
-    public static String[] tabTitle = { "选项1", "选项2","选项3"};
+    public static String[] tabTitle = { "选项1", "选项2","选项3","选项四","选项五"};
     private int currentIndicatorLeft = 0;
 //    private FXFragmentPagerAdapter mAdapter;
     private TabFragmentPagerAdapter mAdapter;
     private LayoutInflater mInflater;
+    //屏幕宽度
+    private int mScreenWidth = 0;
 
     @Override
     public void initView() {
@@ -70,8 +72,8 @@ public class WalletActivity extends BaseActivity {
         //获取屏幕宽度
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
-
-        indicatorWidth = dm.widthPixels / 2;
+        mScreenWidth=dm.widthPixels;
+        indicatorWidth = dm.widthPixels / 4;
 
         ViewGroup.LayoutParams cursor_Params = iv_nav_indicator.getLayoutParams();
         cursor_Params.width = indicatorWidth;//// 初始化滑动下标的宽
@@ -88,18 +90,50 @@ public class WalletActivity extends BaseActivity {
         initNavigationHSV();
 
 //        mAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager());
-        SuccessfulOrderFragment sof=new SuccessfulOrderFragment();
-        frags=new ArrayList<Fragment>();
-        frags.add(sof);
-        UnfinishedFragment uf=new UnfinishedFragment();
-        frags.add(uf);
-//
+//        SuccessfulOrderFragment sof=new SuccessfulOrderFragment();
+//        frags=new ArrayList<Fragment>();
+//        frags.add(sof);
+//        UnfinishedFragment uf=new UnfinishedFragment();
+//        frags.add(uf);
+//        UnfinishedFragment uf1=new UnfinishedFragment();
+//        frags.add(uf1);
+////
 //        mAdapter=new FXFragmentPagerAdapter(getSupportFragmentManager(),frags);
 //        mViewPager.setAdapter(mAdapter);
 //        mViewPager.setCurrentItem(0);
         mAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mAdapter);
 
+    }
+
+
+
+    /**
+     *  选择的Column里面的Tab
+     * */
+    private void selectTab(int tab_postion) {
+//        columnSelectIndex = tab_postion;
+        for (int i = 0; i < rg_nav_content.getChildCount(); i++) {
+            View checkView = rg_nav_content.getChildAt(tab_postion);
+            int k = checkView.getMeasuredWidth();
+            int l = checkView.getLeft();
+            int i2 = l + k / 2 - mScreenWidth / 2;
+            // rg_nav_content.getParent()).smoothScrollTo(i2, 0);
+            mHsv.smoothScrollTo(i2, 0);
+            // mColumnHorizontalScrollView.smoothScrollTo((position - 2) *
+            // mItemWidth , 0);
+        }
+        //判断是否选中
+        for (int j = 0; j <  rg_nav_content.getChildCount(); j++) {
+            View checkView = rg_nav_content.getChildAt(j);
+            boolean ischeck;
+            if (j == tab_postion) {
+                ischeck = true;
+            } else {
+                ischeck = false;
+            }
+            checkView.setSelected(ischeck);
+        }
     }
     private void initNavigationHSV() {
 
@@ -138,7 +172,6 @@ public class WalletActivity extends BaseActivity {
 
                 if (rg_nav_content != null && rg_nav_content.getChildCount() > position) {
                     ((RadioButton) rg_nav_content.getChildAt(position)).performClick();
-
                 }
             }
 
@@ -175,12 +208,15 @@ public class WalletActivity extends BaseActivity {
                     //记录当前下标的距最左侧的距离
                   currentIndicatorLeft = ((RadioButton) rg_nav_content.getChildAt(checkedId)).getLeft();
 
-                    mHsv.smoothScrollTo(
-                            (checkedId > 1 ? ((RadioButton) rg_nav_content.getChildAt(checkedId)).getLeft() : 0) - ((RadioButton) rg_nav_content.getChildAt(2)).getLeft(), 0);
+//                    mHsv.smoothScrollTo(
+//                            (checkedId > 1 ? ((RadioButton) rg_nav_content.getChildAt(checkedId)).getLeft() : 0) - ((RadioButton) rg_nav_content.getChildAt(2)).getLeft(), 0);
+                    selectTab(checkedId);
                 }
             }
         });
     }
+
+
 
     @Override
     public void processClick(View v) {
@@ -196,26 +232,27 @@ public class WalletActivity extends BaseActivity {
 
         @Override
         public Fragment getItem(int arg0) {
-            Fragment ft = null;
+            Fragment fragment = null;
             switch (arg0) {
                 case 0:
-                    ft = new SuccessfulOrderFragment();
+                    fragment = new SuccessfulOrderFragment();
                     break;
                 case 1:
-                    ft = new UnfinishedFragment();
+                    fragment = new UnfinishedFragment();
                     break;
-                case 3:
-                    ft=new SuccessfulOrderFragment();
+                case 2:
+                    fragment=new SuccessfulOrderFragment();
+                    break;
                 default:
-                    ft = new UnfinishedFragment();
-//
+
+                   fragment=new SuccessfulOrderFragment();
 //                    Bundle args = new Bundle();
 //                    args.putString("", tabTitle[arg0]);
-//                    ft.setArguments(args);
+//                    fragment.setArguments(args);
 
                     break;
             }
-            return ft;
+            return fragment;
         }
 
         @Override
