@@ -3,7 +3,7 @@ package com.financial.android.base;
 import com.financial.android.bean.AccessToken;
 import com.financial.android.bean.UserInfo;
 import com.financial.android.utils.SharePrefUtil;
-import com.financial.android.widget.LockPatternUtils;
+import com.financial.android.utils.LockPatternUtils;
 
 import android.app.Application;
 import android.content.Context;

@@ -50,8 +50,10 @@ public class MessageActivity extends BaseActivity {
     @Override
     public void initData() {
         msgs = new ArrayList<Message>();
-        Message msg1 = new Message("shabi", 1452555566);
-        msgs.add(msg1);
+        for(int i=0;i<10;i++) {
+            Message msg1 = new Message("shabi", 1452555566);
+            msgs.add(msg1);
+        }
         Message msg2 = new Message("shadan", 1452555552);
         msgs.add(msg2);
 

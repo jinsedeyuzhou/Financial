@@ -18,7 +18,6 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.financial.android.R;
-import com.financial.android.activity.account.HelpActivity;
 import com.financial.android.activity.account.SettingActivity;
 import com.financial.android.activity.other.WebViewActivity;
 import com.financial.android.activity.test.VerticalViewActivity;
@@ -182,7 +181,8 @@ public class HomeFragment02 extends BaseFragment {
                         startActivity(intent);
                         break;
                     case 1:
-//                        intent=new Intent(ct,);
+                        intent = new Intent(ct, RefreshListViewActivity.class);
+                        startActivity(intent);
                         break;
 
                     default:
@@ -261,6 +261,7 @@ public class HomeFragment02 extends BaseFragment {
                 intent = new Intent(ct, VerticalViewPagerActivity.class);
                 startActivity(intent);
                 break;
+            //scrollView 下拉刷新
             case R.id.ll_bankcard1:
                 intent = new Intent(ct, HelpActivity.class);
                 startActivity(intent);

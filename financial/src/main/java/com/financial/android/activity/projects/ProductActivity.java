@@ -25,7 +25,7 @@ public class ProductActivity extends BaseActivity {
     public void initView() {
         setContentView(R.layout.activity_product);
         directional_viewpager = (DirectionalViewPager) findViewById(R.id.directional_viewpager);
-        directional_viewpager.setOrientation(DirectionalViewPager.VERTICAL);
+        directional_viewpager.setOrientation(DirectionalViewPager.HORIZONTAL);
         fragments=new ArrayList<Fragment>();
         DescriptionFragment df=new DescriptionFragment();
         fragments.add(df);

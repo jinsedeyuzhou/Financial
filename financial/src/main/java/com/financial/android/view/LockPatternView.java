@@ -1,4 +1,4 @@
-package com.financial.android.widget;
+package com.financial.android.view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 
 import com.financial.android.R;
+import com.financial.android.utils.LockPatternUtils;
 
 
 /**

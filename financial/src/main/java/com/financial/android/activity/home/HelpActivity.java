@@ -1,4 +1,4 @@
-package com.financial.android.activity.account;
+package com.financial.android.activity.home;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -54,7 +54,7 @@ public class HelpActivity extends BaseActivity {
         inflater = (LayoutInflater) ct
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        header = (LinearLayout) inflater.inflate(R.layout.drag_drop_header, null);
+        header = (LinearLayout) inflater.inflate(R.layout.scroll_pull_header, null);
         measureView(header);
         headerHeight = header.getMeasuredHeight();
         lastHeaderPadding = (-1*headerHeight); //最后一次调用Move Header的Padding
@@ -219,6 +219,7 @@ public class HelpActivity extends BaseActivity {
 
             @Override
             protected void onPostExecute(Void result) {
+
                 onRefreshComplete();
             }
 
@@ -233,7 +234,7 @@ public class HelpActivity extends BaseActivity {
     private void measureView(View childView) {
         ViewGroup.LayoutParams p = childView.getLayoutParams();
         if (p == null) {
-            p = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
+            p = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
         }
         int childWidthSpec = ViewGroup.getChildMeasureSpec(0, 0 + 0, p.width);

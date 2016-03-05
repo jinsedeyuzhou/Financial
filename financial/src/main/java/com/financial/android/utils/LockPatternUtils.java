@@ -1,4 +1,4 @@
-package com.financial.android.widget;
+package com.financial.android.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,6 +14,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import android.content.Context;
 import android.os.FileObserver;
 import android.util.Log;
+
+import com.financial.android.view.LockPatternView;
 
 /**
  * 图案解锁加密、解密工具类

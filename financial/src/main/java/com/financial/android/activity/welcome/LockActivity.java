@@ -1,6 +1,5 @@
 package com.financial.android.activity.welcome;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -12,8 +11,8 @@ import android.widget.TextView;
 import com.financial.android.R;
 import com.financial.android.base.BaseActivity;
 import com.financial.android.base.FXApplication;
-import com.financial.android.widget.LockPatternUtils;
-import com.financial.android.widget.LockPatternView;
+import com.financial.android.utils.LockPatternUtils;
+import com.financial.android.view.LockPatternView;
 
 import java.util.List;
 
@@ -90,8 +89,8 @@ public class LockActivity extends BaseActivity {
 //						GuideGesturePasswordActivity.class);
 //				// 打开新的Activity
 //				startActivity(intent);
-				showToast("解锁成功");
-				finish();
+//				showToast("解锁成功");
+//				finish();
 			} else {
 				mLockPatternView
 						.setDisplayMode(LockPatternView.DisplayMode.Wrong);

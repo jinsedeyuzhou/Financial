@@ -13,8 +13,8 @@ import android.widget.Toast;
 import com.financial.android.R;
 import com.financial.android.base.FXApplication;
 import com.financial.android.utils.LogUtil;
-import com.financial.android.widget.LockPatternUtils;
-import com.financial.android.widget.LockPatternView;
+import com.financial.android.utils.LockPatternUtils;
+import com.financial.android.view.LockPatternView;
 
 import java.util.ArrayList;
 import java.util.List;

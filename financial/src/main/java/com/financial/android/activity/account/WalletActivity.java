@@ -118,10 +118,7 @@ public class WalletActivity extends BaseActivity {
             int k = checkView.getMeasuredWidth();
             int l = checkView.getLeft();
             int i2 = l + k / 2 - mScreenWidth / 2;
-            // rg_nav_content.getParent()).smoothScrollTo(i2, 0);
             mHsv.smoothScrollTo(i2, 0);
-            // mColumnHorizontalScrollView.smoothScrollTo((position - 2) *
-            // mItemWidth , 0);
         }
         //判断是否选中
         for (int j = 0; j <  rg_nav_content.getChildCount(); j++) {
