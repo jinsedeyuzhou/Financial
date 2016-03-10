@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.financial.android.R;
+import com.financial.android.activity.main.HomeActivity;
 import com.financial.android.base.FXApplication;
 import com.financial.android.utils.LogUtil;
 import com.financial.android.utils.LockPatternUtils;
@@ -396,7 +397,7 @@ public class LockSetupActivity extends Activity implements OnClickListener {
     private void saveChosenPatternAndFinish() {
         FXApplication.getApp().getLockPatternUtils().saveLockPattern(mChosenPattern);
         Toast.makeText(this,"密码设置成功", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, LockActivity.class));
+        startActivity(new Intent(this, HomeActivity.class));
         finish();
     }
 

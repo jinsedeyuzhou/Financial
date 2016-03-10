@@ -1,3 +1,3 @@
-include ':androidPullToRefresh'
+include ':androidPullToRefresh', ':PushSDK'
 include ':xUtilslib2614'
 include ':financial'

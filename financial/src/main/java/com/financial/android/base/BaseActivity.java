@@ -29,6 +29,7 @@ import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.umeng.analytics.MobclickAgent;
 
 /**
  * @author wyy
@@ -300,6 +301,7 @@ public abstract class BaseActivity extends FragmentActivity implements
 		super.onResume();
 		activityState = ACTIVITY_RESUME;
 		LogUtil.i(TAG, "onResume");
+		MobclickAgent.onResume(this);
 	}
 
 	@Override
@@ -307,6 +309,7 @@ public abstract class BaseActivity extends FragmentActivity implements
 		super.onPause();
 		activityState = ACTIVITY_PAUSE;
 		LogUtil.i(TAG, "onPause");
+		MobclickAgent.onPause(this);
 	}
 	@Override
 	protected void onStop() {

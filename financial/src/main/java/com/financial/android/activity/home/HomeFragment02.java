@@ -23,6 +23,7 @@ import com.financial.android.activity.other.WebViewActivity;
 import com.financial.android.activity.test.VerticalViewActivity;
 import com.financial.android.activity.test.VerticalViewPagerActivity;
 import com.financial.android.activity.projects.ProductActivity;
+import com.financial.android.activity.welcome.LockActivity;
 import com.financial.android.activity.welcome.LockSetupActivity;
 import com.financial.android.adapter.GridViewItemAdapter;
 import com.financial.android.adapter.ImagePagerAdapter;
@@ -182,6 +183,10 @@ public class HomeFragment02 extends BaseFragment {
                         break;
                     case 1:
                         intent = new Intent(ct, RefreshListViewActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 2:
+                        intent=new Intent(ct, LockActivity.class);
                         startActivity(intent);
                         break;
 

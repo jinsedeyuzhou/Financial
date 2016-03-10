@@ -1,22 +1,26 @@
 package com.financial.android.activity.welcome;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-
+import android.view.View.OnClickListener;
 import com.financial.android.R;
-import com.financial.android.base.BaseActivity;
+import com.financial.android.activity.login.LoginActivity;
 import com.financial.android.base.FXApplication;
 import com.financial.android.utils.LockPatternUtils;
+import com.financial.android.view.CustomToast;
 import com.financial.android.view.LockPatternView;
 
 import java.util.List;
 
-public class LockActivity extends BaseActivity {
+public class LockActivity extends Activity implements OnClickListener{
 	private LockPatternView mLockPatternView;
 	private int mFailedPatternAttemptsSinceLastTimeout = 0;
 	private CountDownTimer mCountdownTimer = null;
@@ -24,26 +28,36 @@ public class LockActivity extends BaseActivity {
 	private TextView mHeadTextView;
 	private Animation mShakeAnim;
 
+	private TextView gesturepwd_unlock_forget;
+
+
 	@Override
-	public void initView() {
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_lock);
+		initView();
+		initData();
+
+	}
+	public void initView() {
+
 		mLockPatternView = (LockPatternView) this
 				.findViewById(R.id.gesturepwd_unlock_lockview);
 		mLockPatternView.setOnPatternListener(mChooseNewLockPatternListener);
 		mLockPatternView.setTactileFeedbackEnabled(true);
 		mHeadTextView = (TextView) findViewById(R.id.gesturepwd_unlock_text);
 		mShakeAnim = AnimationUtils.loadAnimation(this, R.anim.shake_x);
+
+		gesturepwd_unlock_forget = (TextView) findViewById(R.id.gesturepwd_unlock_forget);
+		gesturepwd_unlock_forget.setOnClickListener(this);
 	}
 
-	@Override
 	public void initData() {
 
 	}
 
-	@Override
-	public void processClick(View v) {
 
-	}
+
 
 
 	@Override
@@ -90,7 +104,7 @@ public class LockActivity extends BaseActivity {
 //				// 打开新的Activity
 //				startActivity(intent);
 //				showToast("解锁成功");
-//				finish();
+				finish();
 			} else {
 				mLockPatternView
 						.setDisplayMode(LockPatternView.DisplayMode.Wrong);
@@ -125,6 +139,7 @@ public class LockActivity extends BaseActivity {
 		private void patternInProgress() {
 		}
 	};
+
 	Runnable attemptLockout = new Runnable() {
 
 		@Override
@@ -155,5 +170,37 @@ public class LockActivity extends BaseActivity {
 		}
 	};
 
+	/**
+	 * 自定义Toast
+	 * @param msg
+	 */
+	protected void showToast(String msg) {
+		showToast(msg, 0);
+	}
 
+	protected void showToast(String msg, int time) {
+		CustomToast customToast = new CustomToast(this, msg, time);
+		customToast.show();
+	}
+
+	@Override
+	public void onClick(View v) {
+		Intent intent=null;
+		switch (v.getId())
+		{
+			case R.id.gesturepwd_unlock_forget:
+				mLockPatternView.removeCallbacks(mClearPatternRunnable);
+				FXApplication.getApp().getLockPatternUtils().clearLock();
+				intent=new Intent(this, LoginActivity.class);
+				startActivity(intent);
+				finish();
+				break;
+		}
+
+	}
+
+	@Override
+	public void onBackPressed() {
+//		super.onBackPressed();
+	}
 }
