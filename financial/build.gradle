@@ -34,3 +34,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.umeng.analytics:analytics:latest.integration'
 }
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}

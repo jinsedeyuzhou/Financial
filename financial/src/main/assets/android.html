@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN">
+<html xmlns="http://www.w3.org/1999/xhtml ">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script language="javascript" type="text/javascript">
+
+    function getFromAndroid(str){
+        document.getElementById("android_show").innerHTML=str;
+    }
+
+    function sendToAndroid(){
+         var str = document.getElementById("message").value;
+         window.custom.runOnAndroidJavaScript(str);//调用android的函数
+     }
+
+    //html调用Android
+    function commonHtmlToAndroid(str)
+    {
+        var str = document.getElementById("message").value;
+        window.custom.commolMethod(str);
+    }
+
+     //Android调用HTML
+    function commonAndroidToInnerHTML(str)
+    {
+
+        document.getElementById("android_show").innerHTML=str;
+    }
+    </script>
+</head>
+    <body>
+        <input type="text" id="message"/><br/>
+        <input type="button" value="Send To Android" onclick="sendToAndroid()"/><br/>
+        <input type="button" value="Send Toast" onclick="commonHtmlToAndroid('21')"/><br/>
+        TextfromAndroid<div id="android_show"></div>
+    </body>
+</html>

@@ -34,6 +34,7 @@
         <!-- main -->
         <activity android:name=".activity.main.HomeActivity"></activity>
         <activity android:name=".activity.other.WebViewActivity" />
+        <activity android:name=".activity.other.JavaScriptActivity"/>
         <!-- welcome -->
         <activity android:name=".activity.welcome.LockSetupActivity"></activity>
         <activity android:name=".activity.welcome.LockActivity"></activity>
@@ -60,6 +61,10 @@
         <!--Test activity-->
         <activity android:name=".activity.test.VerticalViewPagerActivity" />
         <activity android:name=".activity.test.VerticalViewActivity" />
+
+        <service android:name=".restful.config.service.MyPushIntentService"
+            android:process=":push"></service>
+        <service android:name=".restful.config.service.NotificationService"/>
 
         <meta-data
             android:name="UMENG_APPKEY"

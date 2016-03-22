@@ -2,16 +2,23 @@ package com.financial.android.base;
 
 import com.financial.android.bean.AccessToken;
 import com.financial.android.bean.UserInfo;
+import com.financial.android.utils.AppManager;
 import com.financial.android.utils.SharePrefUtil;
 import com.financial.android.utils.LockPatternUtils;
+import com.umeng.message.PushAgent;
+import com.umeng.message.UTrack;
+import com.umeng.message.UmengMessageHandler;
+import com.umeng.message.entity.UMessage;
 
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Handler;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
+import android.widget.Toast;
 
 public class FXApplication extends Application {
 	// 全局变量
@@ -29,7 +36,8 @@ public class FXApplication extends Application {
 
 	private AccessToken accessToken;
 	private UserInfo userInfo;
-	
+	private PushAgent mPushAgent;
+
 	/**
 	 * token是否失效，或者是否可用 判断
 	 * 
@@ -50,6 +58,8 @@ public class FXApplication extends Application {
 		super.onCreate();
 		application = this;
 		mLockPatternUtils = new LockPatternUtils(this);
+
+		mPushAgent = PushAgent.getInstance(this);
 
 		// 获取系统id
 		TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
@@ -81,6 +91,34 @@ public class FXApplication extends Application {
 		if (firstLaunch == true) {
 			SharePrefUtil.saveBoolean(getApplicationContext(), SharePrefUtil.KEY.FIRST_LAUNCH, true);
 		}
+
+
+		UmengMessageHandler messageHandler = new UmengMessageHandler(){
+			@Override
+			public void dealWithCustomMessage(final Context context, final UMessage msg) {
+				new Handler(getMainLooper()).post(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						// 对自定义消息的处理方式，点击或者忽略
+						boolean isClickOrDismissed = true;
+						if(isClickOrDismissed) {
+							//自定义消息的点击统计
+							UTrack.getInstance(getApplicationContext()).trackMsgClick(msg);
+						} else {
+							//自定义消息的忽略统计
+							UTrack.getInstance(getApplicationContext()).trackMsgDismissed(msg);
+						}
+						Toast.makeText(context, msg.custom, Toast.LENGTH_LONG).show();
+
+					}
+				});
+			}
+		};
+		mPushAgent.setMessageHandler(messageHandler);
+
+
 	
 	}
 

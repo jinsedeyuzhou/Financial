@@ -1,55 +1,65 @@
 package com.financial.android.activity.other;
 
-import java.io.IOException;
-
-import org.apache.http.impl.cookie.BasicClientCookie;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.Window;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
+import android.webkit.JavascriptInterface;
 import android.webkit.SslErrorHandler;
+import android.webkit.WebChromeClient;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.financial.android.R;
 import com.financial.android.utils.DialogUtil;
 import com.financial.android.view.CustomProgressDialog;
 
+import org.apache.http.impl.cookie.BasicClientCookie;
+
 @SuppressLint("SetJavaScriptEnabled")
-public class WebViewActivity extends Activity {
+public class JavaScriptActivity extends Activity implements OnClickListener{
     private ImageView mBack;
     private TextView title;
-    private WebView wv_webView_protocol;
+    private WebView webview_js;
     private String protocolUrl;
     private Context ct = this;
     private Bundle bundle;
     private String strTitle;
+    private EditText et_send_text;
+    private Button btn_send;
+    private Handler handler = new Handler();
+//    private GoogleApiClient client;
+    private TextView tv_show;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_webview);
-        showProgressDialog("加载中...");
-        Intent intent = getIntent();
-        bundle = intent.getExtras();
-        strTitle = bundle.getString("title", "百度一下");
-        protocolUrl = bundle.getString("url", "https://www.baidu.com/");
+        setContentView(R.layout.activity_javascript);
+//        showProgressDialog("加载中...");
+//        Intent intent = getIntent();
+//        bundle = intent.getExtras();
+//        strTitle = bundle.getString("title", "百度一下");
+//        protocolUrl = bundle.getString("url", "https://www.baidu.com/");
 
 
         initTitleBar();
@@ -74,19 +84,26 @@ public class WebViewActivity extends Activity {
                 onBackPressed();
             }
         });
-
         TextView bar_tv_title = (TextView) findViewById(R.id.bar_tv_title);
+        strTitle="javascript";
         bar_tv_title.setText(strTitle);
     }
 
     private void initView() {
-        wv_webView_protocol = (WebView) findViewById(R.id.webview_protocol);
-        // 同步cookies
-        // synCookies(this, protocolUrl);
+
+        webview_js = (WebView) findViewById(R.id.webview_js);
+        et_send_text = (EditText) findViewById(R.id.et_send_text);
+        tv_show = (TextView) findViewById(R.id.tv_show);
+        btn_send = (Button) findViewById(R.id.btn_send);
+        btn_send.setOnClickListener(this);
+
         // 设置webview属性
-        WebSettings wSet = wv_webView_protocol.getSettings();
+        WebSettings wSet = webview_js.getSettings();
         initWebViewSettings(wSet);
-        wv_webView_protocol.setWebViewClient(new WebViewClient() {
+        webview_js.addJavascriptInterface(new runJavaScript(), "custom");
+        webview_js.setWebChromeClient(new WebChromeClient() {
+        });
+        webview_js.setWebViewClient(new WebViewClient() {
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view,
                                                               String url) {
@@ -108,8 +125,9 @@ public class WebViewActivity extends Activity {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                closeProgressDialog();
+//                closeProgressDialog();
                 super.onPageFinished(view, url);
+
             }
 
             @Override
@@ -119,35 +137,21 @@ public class WebViewActivity extends Activity {
                 handler.proceed();
             }
         });
-        wv_webView_protocol.setOnLongClickListener(new OnLongClickListener() {
+        //长按处理
+        webview_js.setOnLongClickListener(new OnLongClickListener() {
 
             @Override
             public boolean onLongClick(View v) {
+                //不显示编辑框
                 return true;
             }
         });
-        wv_webView_protocol.loadUrl(protocolUrl);
+        protocolUrl="file:///android_asset/android.html";
+        webview_js.loadUrl(protocolUrl);
+//        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    private void synCookies(WebViewActivity webViewActivity, String protocolUrl) {
-        CookieSyncManager.createInstance(this);
-        CookieManager cookieManager = CookieManager.getInstance();
-        cookieManager.setAcceptCookie(true);
-        // Cookie sessionCookie =
-        // FXApplication.getApp().getPersistentCookieStore().getCookie("userName");
-        BasicClientCookie sessionCookie = new BasicClientCookie("test", "hello");
-        sessionCookie.setDomain("192.168.1.105");
-        sessionCookie.setPath("/");
-        // Cookie sessionCookie = null;
-        if (sessionCookie != null) {
-            String cookieString = sessionCookie.getName() + "="
-                    + sessionCookie.getValue() + "; domain="
-                    + sessionCookie.getDomain();
-            cookieManager.setCookie(protocolUrl, cookieString);
 
-            CookieSyncManager.getInstance().sync();
-        }
-    }
 
     private void initWebViewSettings(WebSettings wSet) {
         // 是否显示缩放按钮
@@ -170,6 +174,28 @@ public class WebViewActivity extends Activity {
 //		wSet.setDomStorageEnabled(true);
 //		wSet.setDatabaseEnabled(true);
 
+    }
+
+    public  class runJavaScript{//这个Java 对象是绑定在另一个线程里的，
+        //添加接口支持api17以上
+        @JavascriptInterface
+        public void runOnAndroidJavaScript(final String str){
+            handler.post(new Runnable(){
+                @Override
+                public void run() {//这里应该特别注意的
+                    tv_show.setText("This is a message from javascript:"+str);
+                }
+
+            });
+        }
+
+
+        @JavascriptInterface
+        public void commolMethod(String message) {
+
+            Toast.makeText(ct,message,Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     /**
@@ -199,4 +225,53 @@ public class WebViewActivity extends Activity {
             dialog.dismiss();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.btn_send:
+                webview_js.loadUrl("javascript:getFromAndroid('" + et_send_text.getText().toString() + "')");
+                break;
+        }
+
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+//        // ATTENTION: This was auto-generated to implement the App Indexing API.
+//        // See https://g.co/AppIndexing/AndroidStudio for more information.
+//        client.connect();
+//        Action viewAction = Action.newAction(
+//                Action.TYPE_VIEW, // TODO: choose an action type.
+//                "JavaScript Page", // TODO: Define a title for the content shown.
+//                // TODO: If you have web page content that matches this app activity's content,
+//                // make sure this auto-generated web page URL is correct.
+//                // Otherwise, set the URL to null.
+//                Uri.parse("http://host/path"),
+//                // TODO: Make sure this auto-generated app deep link URI is correct.
+//                Uri.parse("android-app://com.study.javascript/http/host/path")
+//        );
+//        AppIndex.AppIndexApi.start(client, viewAction);
+    }
+
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+
+//        // ATTENTION: This was auto-generated to implement the App Indexing API.
+//        // See https://g.co/AppIndexing/AndroidStudio for more information.
+//        Action viewAction = Action.newAction(
+//                Action.TYPE_VIEW,
+//                "JavaScript Page",
+//                Uri.parse("http://host/path"),
+//                //注意是包名
+//                Uri.parse("android-app://com.study.javascript/http/host/path")
+//        );
+//        AppIndex.AppIndexApi.end(client, viewAction);
+//        client.disconnect();
+    }
 }

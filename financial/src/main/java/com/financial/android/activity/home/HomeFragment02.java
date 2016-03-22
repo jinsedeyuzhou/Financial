@@ -19,6 +19,7 @@ import android.widget.ViewFlipper;
 
 import com.financial.android.R;
 import com.financial.android.activity.account.SettingActivity;
+import com.financial.android.activity.other.JavaScriptActivity;
 import com.financial.android.activity.other.WebViewActivity;
 import com.financial.android.activity.test.VerticalViewActivity;
 import com.financial.android.activity.test.VerticalViewPagerActivity;
@@ -187,6 +188,10 @@ public class HomeFragment02 extends BaseFragment {
                         break;
                     case 2:
                         intent=new Intent(ct, LockActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 3:
+                        intent=new Intent(ct, JavaScriptActivity.class);
                         startActivity(intent);
                         break;
 

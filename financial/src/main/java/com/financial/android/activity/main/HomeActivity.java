@@ -9,11 +9,18 @@ import com.financial.android.activity.home.HomeFragment02;
 import com.financial.android.activity.projects.ProjectsFragment;
 import com.financial.android.base.BaseActivity;
 import com.financial.android.base.FXFragmentPagerAdapter;
+import com.financial.android.restful.config.service.MyPushIntentService;
 import com.financial.android.view.CustomViewPager;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
 import com.umeng.message.UmengRegistrar;
 
+import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -50,6 +57,7 @@ public class HomeActivity extends BaseActivity {
 		}
 	};
 	private PushAgent mPushAgent;
+	private ServiceRecevier serviceRecevier;
 
 //	private void initTitleBar() {
 //		titleTv = (TextView) findViewById(R.id.bar_tv_title);
@@ -77,6 +85,11 @@ public class HomeActivity extends BaseActivity {
 		});
 		String device_token = UmengRegistrar.getRegistrationId(this);
 		System.out.println("device_token:" + device_token);
+		serviceRecevier = new ServiceRecevier();
+		IntentFilter intentFilter = new IntentFilter();
+		intentFilter.addAction("com.study.shabi");
+		registerReceiver(serviceRecevier, intentFilter);
+		mPushAgent.setPushIntentServiceClass(MyPushIntentService.class);
 
 //		initTitleBar();
 		viewPager = (CustomViewPager) findViewById(R.id.home_viewpager);
@@ -209,4 +222,50 @@ public class HomeActivity extends BaseActivity {
 
 	}
 
+
+	public class ServiceRecevier extends BroadcastReceiver
+	{
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			String action=intent.getAction();
+
+			showUpdateDialog1();
+			System.out.println("cust");
+			if ("com.study.android".equals(action)) {
+
+			}
+		}
+	}
+
+	public void showUpdateDialog1() {
+		AlertDialog.Builder bulider = new AlertDialog.Builder(this);
+		bulider.setTitle("发现新版本");
+		bulider.setMessage("asdfkjdajf");
+		bulider.setPositiveButton("升级", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+			}
+		});
+		bulider.setNegativeButton("忽略", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+			}
+		});
+		bulider.setOnCancelListener(new DialogInterface.OnCancelListener() {
+
+			@Override
+			public void onCancel(DialogInterface dialog) {
+			}
+		});
+		bulider.show();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		unregisterReceiver(serviceRecevier);
+	}
 }
