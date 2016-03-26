@@ -89,7 +89,8 @@ public class HomeActivity extends BaseActivity {
 		IntentFilter intentFilter = new IntentFilter();
 		intentFilter.addAction("com.study.shabi");
 		registerReceiver(serviceRecevier, intentFilter);
-		mPushAgent.setPushIntentServiceClass(MyPushIntentService.class);
+//		mPushAgent.setPushIntentServiceClass(MyPushIntentService.class);
+		mPushAgent.setPushIntentServiceClass(null);
 
 //		initTitleBar();
 		viewPager = (CustomViewPager) findViewById(R.id.home_viewpager);
@@ -232,7 +233,9 @@ public class HomeActivity extends BaseActivity {
 
 			showUpdateDialog1();
 			System.out.println("cust");
-			if ("com.study.android".equals(action)) {
+			System.out.println("cust"+action);
+
+			if ("com.study.shabi".equals(action)) {
 
 			}
 		}

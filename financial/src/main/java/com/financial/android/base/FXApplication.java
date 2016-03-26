@@ -1,5 +1,7 @@
 package com.financial.android.base;
 
+import com.financial.android.activity.login.LoginActivity;
+import com.financial.android.activity.main.HomeActivity;
 import com.financial.android.bean.AccessToken;
 import com.financial.android.bean.UserInfo;
 import com.financial.android.utils.AppManager;
@@ -8,10 +10,12 @@ import com.financial.android.utils.LockPatternUtils;
 import com.umeng.message.PushAgent;
 import com.umeng.message.UTrack;
 import com.umeng.message.UmengMessageHandler;
+import com.umeng.message.UmengNotificationClickHandler;
 import com.umeng.message.entity.UMessage;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -117,6 +121,23 @@ public class FXApplication extends Application {
 			}
 		};
 		mPushAgent.setMessageHandler(messageHandler);
+
+		/**
+		 * 该Handler是在BroadcastReceiver中被调用，故
+		 * 如果需启动Activity，需添加Intent.FLAG_ACTIVITY_NEW_TASK
+		 * */
+		UmengNotificationClickHandler notificationClickHandler = new UmengNotificationClickHandler(){
+			@Override
+			public void dealWithCustomAction(Context context, UMessage msg) {
+				Toast.makeText(context, msg.custom, Toast.LENGTH_LONG).show();
+				//在这里新建一个Acitivity,可以打开指定的Activity,然后可以在Activity结束时打开指定的Activity。
+				Intent intent = new Intent();
+				intent.setClass(getApplicationContext(), LoginActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				startActivity(intent);
+			}
+		};
+		mPushAgent.setNotificationClickHandler(notificationClickHandler);
 
 
 	

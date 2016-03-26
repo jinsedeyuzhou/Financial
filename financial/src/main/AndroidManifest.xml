@@ -40,6 +40,7 @@
         <activity android:name=".activity.welcome.LockActivity"></activity>
         <activity android:name=".activity.welcome.GuideViewActivity"></activity>
         <activity android:name=".activity.welcome.GuideGesturePasswordActivity" />
+        <activity android:name=".activity.welcome.GuideViewFlipper"/>
         <!-- login -->
         <activity android:name=".activity.login.LoginActivity"></activity>
         <activity android:name=".activity.login.RegisterActivity"></activity>
@@ -48,6 +49,7 @@
         <activity android:name=".activity.home.PositionActivity"></activity>
         <activity android:name=".activity.home.HelpActivity" />
         <activity android:name=".activity.home.RefreshListViewActivity" />
+        <activity android:name=".activity.home.BarcodeActivity"/>
 
         <!-- account -->
         <activity android:name=".activity.account.SettingActivity"></activity>

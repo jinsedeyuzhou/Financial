@@ -24,6 +24,7 @@ import com.financial.android.activity.other.WebViewActivity;
 import com.financial.android.activity.test.VerticalViewActivity;
 import com.financial.android.activity.test.VerticalViewPagerActivity;
 import com.financial.android.activity.projects.ProductActivity;
+import com.financial.android.activity.welcome.GuideViewFlipper;
 import com.financial.android.activity.welcome.LockActivity;
 import com.financial.android.activity.welcome.LockSetupActivity;
 import com.financial.android.adapter.GridViewItemAdapter;
@@ -194,6 +195,9 @@ public class HomeFragment02 extends BaseFragment {
                         intent=new Intent(ct, JavaScriptActivity.class);
                         startActivity(intent);
                         break;
+                    case 4:
+                        intent=new Intent(ct, GuideViewFlipper.class);
+                        startActivity(intent);
 
                     default:
                         break;
