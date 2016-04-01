@@ -164,7 +164,7 @@ public class HomeFragment02 extends BaseFragment {
         ll_invest1.setOnClickListener(this);
 
 
-        gridItemList = new ArrayList<GridViewItem>();//不能全局初始化
+        gridItemList = new ArrayList<GridViewItem>();   //不能全局初始化
         for (int i = 0; i < imgIds.length; i++) {
             GridViewItem gridItem = new GridViewItem(title[i], imgIds[i]);
             gridItemList.add(gridItem);
@@ -217,6 +217,11 @@ public class HomeFragment02 extends BaseFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode==10)
+        {
+            String cityName = data.getStringExtra("cityName");
+            bar_tv_left.setText(cityName);
+        }
 
     }
 
@@ -234,7 +239,6 @@ public class HomeFragment02 extends BaseFragment {
 
     /**
      * 填充banner
-     *
      * @param imageUrlList
      */
     private void initBanner(ArrayList<String> imageUrlList) {
