@@ -1,7 +1,9 @@
 package com.financial.android.utils;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -202,4 +204,136 @@ public class StringUtil {
 
 		return result.toString();
 	}
+
+
+	public static String formatPercent3(double d) {
+		DecimalFormat df = new DecimalFormat("##.##");
+		return df.format(d);
+	}
+	public static String formatPercent4(double d) {
+		DecimalFormat df = new DecimalFormat("##.00");
+		return df.format(d);
+	}
+
+	public static String formatPercent6(double d) {
+		DecimalFormat df = new DecimalFormat("##");
+		return df.format(d);
+	}
+
+	public static String formatPercent5(double d) {
+		DecimalFormat df = new DecimalFormat("##0.00");
+		return df.format(d);
+	}
+
+	/**
+	 * 舍入
+	 *
+	 * @param d
+	 * @return
+	 */
+	public static String formatPercent7(double d) {
+		BigDecimal bd = new BigDecimal(Double.toString(d));
+		double setScale = bd.setScale(2, bd.ROUND_DOWN).doubleValue();
+		DecimalFormat df = new DecimalFormat("##0.00");
+		return df.format(setScale);
+	}
+
+	/**
+	 * 格式化输出本地货币字符 减少.00
+	 *
+	 * @param d
+	 * @return
+	 */
+	public static String formatLocalCurrency02(double d) {
+		NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+		String result = currencyFormat.format(d);
+		String moneyString = result.substring(1);
+
+		return moneyString.substring(0, moneyString.length() - 3);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 *
+	 * DecimalFormat Double类型转成固定格式如“0.0”
+	 *
+	 * @return
+	 */
+	public static String getTextforDecimalFormat(Double d,String str){
+		DecimalFormat df = new DecimalFormat(str);
+
+		return df.format(d);
+	}
+	/**
+	 * 获取Double对象
+	 */
+	public static Double getDouble(String str) {
+		Double mDouble = Double.valueOf(str);
+		return mDouble;
+	}
+
+	/**
+	 * 日期转为格林威治时间
+	 */
+	public static long getdaytime(String date) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date dt2 = null;
+		try {
+			dt2 = sdf.parse(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dt2.getTime();
+	}
+
+
+//	/**
+//	 * 判定输入汉字
+//	 *
+//	 * @param c
+//	 * @return
+//	 */
+//	public boolean isChinese(char c) {
+//		Character.UnicodeBlock ub = Character.UnicodeBlock.of(c);
+//		if (ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
+//				|| ub == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
+//				|| ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
+//				|| ub == Character.UnicodeBlock.GENERAL_PUNCTUATION
+//				|| ub == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION
+//				|| ub == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS) {
+//			return true;
+//		}
+//		return false;
+//	}
+//
+//	/**
+//	 * 检测String是否全是中文
+//	 *
+//	 * @param name
+//	 * @return
+//	 */
+//	public boolean checkNameChese(String name) {
+//		boolean res = true;
+//		char[] cTemp = name.toCharArray();
+//		for (int i = 0; i < name.length(); i++) {
+//			if (!isChinese(cTemp[i])) {
+//				res = false;
+//				break;
+//			}
+//		}
+//		return res;
+//	}
+
 }

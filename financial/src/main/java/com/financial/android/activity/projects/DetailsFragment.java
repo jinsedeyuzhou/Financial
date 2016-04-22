@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 
 import com.financial.android.R;
 import com.financial.android.base.BaseFragment;
+import com.financial.android.view.CircleProgressBar;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
  * Created by wyy on 2016/1/27.
@@ -15,6 +17,9 @@ import com.lidroid.xutils.ViewUtils;
 public class DetailsFragment extends BaseFragment {
 
     private View view;
+    @ViewInject(R.id.circlr_progressbar)
+    private CircleProgressBar circlr_progressbar;
+    private int progress;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
@@ -25,11 +30,19 @@ public class DetailsFragment extends BaseFragment {
 
     @Override
     protected void initData(Bundle savedInstanceState) {
+        progress=80;
+        circlr_progressbar.setProgress(progress);
 
     }
 
     @Override
     protected void processClick(View v) {
 
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        progress=0;
     }
 }

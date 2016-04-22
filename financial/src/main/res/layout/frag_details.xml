@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android_custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="详细"
+        />
+    <com.financial.android.view.CircleProgressBar
+        android:id="@+id/circlr_progressbar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android_custom:roundColor="#D1D1D1"
+        android_custom:roundProgressColor="@android:color/holo_orange_dark"
+        android_custom:textColor="@android:color/holo_green_dark"
+        android_custom:textIsDisplayable="true"
+        android_custom:roundWidth="5dip"
+        android_custom:textProgressSize="18sp"
         />
 
 </LinearLayout>

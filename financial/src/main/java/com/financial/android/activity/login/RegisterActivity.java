@@ -1,13 +1,20 @@
 package com.financial.android.activity.login;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.text.InputType;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.financial.android.R;
 import com.financial.android.base.BaseActivity;
+import com.financial.android.utils.KeyboardUtil;
 import com.financial.android.utils.TimeCount;
+import com.financial.android.view.ClearEditText;
 
 
 public class RegisterActivity extends BaseActivity {
@@ -17,11 +24,32 @@ public class RegisterActivity extends BaseActivity {
     private TextView bar_tv_title;
     private TextView tv_register_smscode;
     private TimeCount timeCount;
+    private ClearEditText et_username_register;
+    private ClearEditText et_pass_register;
 
     @Override
     public void initView() {
         setContentView(R.layout.activity_register);
         initTitleBar();
+        et_username_register = (ClearEditText) findViewById(R.id.et_username_register);
+        et_pass_register = (ClearEditText) findViewById(R.id.et_pass_register);
+        et_pass_register.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                    InputMethodManager imm = (InputMethodManager) ct
+                            .getSystemService(Context.INPUT_METHOD_SERVICE);
+                    // imm.hideSoftInputFromWindow(myEditText.getWindowToken(), 0);隐藏系统软键盘
+                    if (imm.isActive())  //一直是true
+                        imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,
+                                InputMethodManager.HIDE_NOT_ALWAYS);
+                int inputback = et_pass_register.getInputType();
+                et_pass_register.setInputType(InputType.TYPE_NULL);
+                new KeyboardUtil(RegisterActivity.this, ct, et_pass_register).showKeyboard();
+                et_pass_register.setInputType(inputback);
+                return false;
+            }
+        });
+
         tv_register_smscode = (TextView) findViewById(R.id.tv_register_smscode);
 
         tv_register_smscode.setOnClickListener(this);

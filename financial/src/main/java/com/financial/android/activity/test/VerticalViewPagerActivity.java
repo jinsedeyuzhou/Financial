@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 /**
  * Created by wyy on 2016/1/29.
+ * VerticalViewPager
  */
 public class VerticalViewPagerActivity extends BaseActivity {
     private ArrayList<Fragment> fragments;

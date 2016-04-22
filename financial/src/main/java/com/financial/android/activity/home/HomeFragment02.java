@@ -198,6 +198,11 @@ public class HomeFragment02 extends BaseFragment {
                     case 4:
                         intent=new Intent(ct, GuideViewFlipper.class);
                         startActivity(intent);
+                        break;
+                    case 5:
+                        intent=new Intent(ct,SpinnerSelectActivity.class);
+                        startActivity(intent);
+                        break;
 
                     default:
                         break;

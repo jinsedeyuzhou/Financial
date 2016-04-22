@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by wyy on 2016/1/29.
+ * 显示衣服 VerticalViewPager widget
  */
 public class VerticalViewActivity extends BaseActivity {
 

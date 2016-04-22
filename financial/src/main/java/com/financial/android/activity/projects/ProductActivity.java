@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 /**
  * Created by wyy on 2016/1/27.
+ * DirectionalViewPager view
  *
  */
 public class ProductActivity extends BaseActivity {

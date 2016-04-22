@@ -50,6 +50,7 @@
         <activity android:name=".activity.home.HelpActivity" />
         <activity android:name=".activity.home.RefreshListViewActivity" />
         <activity android:name=".activity.home.BarcodeActivity"/>
+        <activity android:name=".activity.home.SpinnerSelectActivity"/>
 
         <!-- account -->
         <activity android:name=".activity.account.SettingActivity"></activity>

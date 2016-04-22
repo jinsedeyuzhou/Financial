@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/bar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        >
+        <Spinner
+            android:id="@+id/spinner_country"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="3dp"
+            android:layout_height="match_parent"/>
+        <View
+            android:layout_width="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"
+            android:layout_height="match_parent"
+            android:background="@color/gainsboro"
+            />
+        <Spinner
+            android:id="@+id/spinner_city"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+
+            android:layout_margin="3dp"
+            android:layout_height="match_parent"/>
+        <View
+            android:layout_width="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"
+            android:layout_height="match_parent"
+            android:background="@color/gainsboro"
+            />
+        <Spinner
+            android:id="@+id/spinner_school"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="3dp"
+            android:layout_height="match_parent"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/btn_time_select"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="时间选择器"
+            />
+        <Button
+            android:id="@+id/btn_city_select"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="三级联动city"
+            android:layout_height="match_parent" />
+
+        <View
+            android:id="@+id/vMasker"
+            android:visibility="gone"
+            android:background="#e0000000"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"/>
+
+    </LinearLayout>
+
+</LinearLayout>
