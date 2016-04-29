@@ -12,6 +12,7 @@ import com.umeng.message.UTrack;
 import com.umeng.message.UmengMessageHandler;
 import com.umeng.message.UmengNotificationClickHandler;
 import com.umeng.message.entity.UMessage;
+import com.umeng.socialize.PlatformConfig;
 
 import android.app.Application;
 import android.content.Context;
@@ -64,6 +65,8 @@ public class FXApplication extends Application {
 		mLockPatternUtils = new LockPatternUtils(this);
 
 		mPushAgent = PushAgent.getInstance(this);
+		PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
+		PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
 
 		// 获取系统id
 		TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);

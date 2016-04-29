@@ -1,10 +1,12 @@
 package com.financial.android.activity.projects;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.financial.android.R;
@@ -23,6 +25,7 @@ import java.util.List;
 
 /**
  * Created by wyy on 2016/1/26.
+ * 直投项目
  */
 public class AssignmentFragment extends BaseFragment {
 
@@ -61,6 +64,14 @@ public class AssignmentFragment extends BaseFragment {
             @Override
             public void onLastItemVisible() {
                 showToast("End of List!");
+            }
+        });
+        pull_refresh_list_assign.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent intent=new Intent(ct,ProductActivity.class);
+                startActivity(intent);
             }
         });
 

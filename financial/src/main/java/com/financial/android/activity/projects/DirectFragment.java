@@ -1,11 +1,14 @@
 package com.financial.android.activity.projects;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.financial.android.R;
 import com.financial.android.adapter.ProjectsListAdapter;
@@ -21,6 +24,7 @@ import java.util.List;
 
 /**
  * Created by wyy on 2016/1/26.
+ * 直投项目
  */
 public class DirectFragment extends BaseFragment {
     @ViewInject(R.id.pull_refresh_list_direct)
@@ -57,7 +61,14 @@ public class DirectFragment extends BaseFragment {
                 showToast("End of List!");
             }
         });
-
+        pull_refresh_list_direct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(ct, position-1+"", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(ct,ProductActivity.class);
+                startActivity(intent);
+            }
+        });
         ListView listViewAssign = pull_refresh_list_direct.getRefreshableView();
         plAdapter = new ProjectsListAdapter(ct, productsList, listViewAssign);
         listViewAssign.setAdapter(plAdapter);

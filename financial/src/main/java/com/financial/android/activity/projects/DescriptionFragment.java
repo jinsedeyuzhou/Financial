@@ -11,6 +11,7 @@ import com.lidroid.xutils.ViewUtils;
 
 /**
  * Created by wyy on 2016/1/27.
+ *
  */
 public class DescriptionFragment extends BaseFragment {
 

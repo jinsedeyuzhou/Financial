@@ -43,6 +43,5 @@ public class DetailsFragment extends BaseFragment {
     @Override
     public void onStop() {
         super.onStop();
-        progress=0;
     }
 }
