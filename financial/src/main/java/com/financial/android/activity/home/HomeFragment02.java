@@ -27,17 +27,21 @@ import com.financial.android.activity.projects.ProductActivity;
 import com.financial.android.activity.welcome.GuideViewFlipper;
 import com.financial.android.activity.welcome.LockActivity;
 import com.financial.android.activity.welcome.LockSetupActivity;
+import com.financial.android.adapter.DragAdapter;
 import com.financial.android.adapter.GridViewItemAdapter;
 import com.financial.android.adapter.ImagePagerAdapter;
 import com.financial.android.base.BaseFragment;
 import com.financial.android.bean.GridViewItem;
 import com.financial.android.utils.LogUtil;
 import com.financial.android.view.CircleFlowIndicator;
+import com.financial.android.view.DragGridView;
 import com.financial.android.view.ViewFlow;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -65,7 +69,8 @@ public class HomeFragment02 extends BaseFragment {
     private FrameLayout main_notice;
     //gridview
     @ViewInject(R.id.gridview)
-    private GridView gridview;
+//    private CustomGridView gridview;
+    private DragGridView gridview;
 
     // bannerview
     @ViewInject(R.id.viewflow)
@@ -108,6 +113,8 @@ public class HomeFragment02 extends BaseFragment {
     private GridViewItemAdapter imageAdapter;
     private Timer mTimer;
     private int mCurrPos;
+
+    private List<HashMap<String, Object>> dataSourceList = new ArrayList<HashMap<String, Object>>();
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
@@ -168,9 +175,17 @@ public class HomeFragment02 extends BaseFragment {
         for (int i = 0; i < imgIds.length; i++) {
             GridViewItem gridItem = new GridViewItem(title[i], imgIds[i]);
             gridItemList.add(gridItem);
+            HashMap<String, Object> itemHashMap = new HashMap<String, Object>();
+            itemHashMap.put("item_image",imgIds[i]);
+            itemHashMap.put("item_text", title[i]);
+            dataSourceList.add(itemHashMap);
         }
-        imageAdapter = new GridViewItemAdapter(ct, gridItemList, gridview);
-        gridview.setAdapter(imageAdapter);
+        final DragAdapter mDragAdapter = new DragAdapter(ct, dataSourceList);
+
+        gridview.setAdapter(mDragAdapter);
+
+//        imageAdapter = new GridViewItemAdapter(ct, gridItemList, gridview);
+//        gridview.setAdapter(imageAdapter);
         gridview.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
@@ -210,6 +225,9 @@ public class HomeFragment02 extends BaseFragment {
 
             }
         });
+
+
+
 
     }
 

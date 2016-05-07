@@ -158,21 +158,55 @@
         </LinearLayout>
     </LinearLayout>
 
-    <GridView
-        android:id="@+id/gridview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="3dp"
-        android:background="@color/white"
-        android:columnWidth="90dp"
-        android:gravity="center"
-        android:horizontalSpacing="3dp"
-        android:numColumns="3"
-        android:padding="3dp"
-        android:scrollbars="none"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="3dp" >
-    </GridView>
+    <!--<GridView-->
+
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_margin="3dp"-->
+        <!--android:background="@color/white"-->
+        <!--android:columnWidth="90dp"-->
+        <!--android:gravity="center"-->
+        <!--android:horizontalSpacing="3dp"-->
+        <!--android:numColumns="3"-->
+        <!--android:padding="3dp"-->
+        <!--android:scrollbars="none"-->
+        <!--android:stretchMode="columnWidth"-->
+        <!--android:verticalSpacing="3dp"-->
+        <!--android:visibility="gone"-->
+        <!-->-->
+    <!--</GridView>-->
+
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:scrollbars="none"-->
+        <!-->-->
+        <!--<com.financial.android.view.CustomGridView-->
+            <!--android:id="@+id/gridview"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:horizontalSpacing="0.0dip"-->
+            <!--android:listSelector="@null"-->
+            <!--android:numColumns="3"-->
+            <!--android:scrollbars="none"-->
+            <!--android:stretchMode="columnWidth"-->
+            <!--android:verticalSpacing="0.0dip"-->
+            <!--> -->
+        <com.financial.android.view.DragGridView
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:horizontalSpacing="0.0dip"
+            android:listSelector="@null"
+            android:numColumns="3"
+            android:scrollbars="none"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="0.0dip"
+           />
+
+
+
+    <!--</ScrollView>-->
    
 
 </LinearLayout>
