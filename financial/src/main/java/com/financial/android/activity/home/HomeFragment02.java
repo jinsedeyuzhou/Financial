@@ -114,7 +114,7 @@ public class HomeFragment02 extends BaseFragment {
     private Timer mTimer;
     private int mCurrPos;
 
-    private List<HashMap<String, Object>> dataSourceList = new ArrayList<HashMap<String, Object>>();
+    private List<HashMap<String, Object>> dataSourceList;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
@@ -148,6 +148,7 @@ public class HomeFragment02 extends BaseFragment {
         imageUrlList = new ArrayList<String>();
         linkUrlArray = new ArrayList<String>();
         titleList = new ArrayList<String>();
+        dataSourceList = new ArrayList<HashMap<String, Object>>();
 
         imageUrlList
                 .add("http://b.hiphotos.baidu.com/image/pic/item/d01373f082025aaf95bdf7e4f8edab64034f1a15.jpg");

@@ -22,12 +22,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.financial.android.R;
 import com.financial.android.base.BaseActivity;
 import com.financial.android.utils.LogUtil;
 import com.financial.android.view.ClearEditText;
 import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
 
@@ -193,7 +196,7 @@ public class LoginActivity extends BaseActivity {
                         .withText("呵呵")
                         .withTitle("title")
                         .withTargetUrl("http://www.baidu.com")
-                        .setListenerList()
+                        .setListenerList(umShareListener)
                         .withMedia(image)
                         .open();
                 break;
@@ -255,5 +258,28 @@ public class LoginActivity extends BaseActivity {
         }
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult( requestCode, resultCode, data);
+    }
+    UMShareListener umShareListener= new UMShareListener() {
+        @Override
+        public void onResult(SHARE_MEDIA platform) {
+            Toast.makeText(ct, platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, Throwable t) {
+            Toast.makeText(ct,platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform) {
+            Toast.makeText(ct,platform + " 分享取消了", Toast.LENGTH_SHORT).show();
+        }
+    };
+
 
 }
