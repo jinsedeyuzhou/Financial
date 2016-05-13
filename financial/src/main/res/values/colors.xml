@@ -66,5 +66,5 @@
     <drawable name="trans">@color/color_hei_8</drawable>
     <!-- 自定义软键盘-->
     <color name="lightblack">#ff202020</color>
-
+    <color name="reveal_color">#1b000000</color>
 </resources>
