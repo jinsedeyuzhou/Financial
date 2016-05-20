@@ -26,6 +26,7 @@ import com.financial.android.utils.NetUtil;
 import com.financial.android.view.CustomProgressDialog;
 import com.financial.android.view.CustomToast;
 import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
@@ -202,10 +203,11 @@ public abstract class BaseActivity extends FragmentActivity implements
 
 		}
 		params.addHeader("x-deviceid", app.getDeviceId());
-		// params.addHeader("x-channel", app.getChannel());
+//		 params.addHeader("x-channel", app.getChannel()); 渠道推送时有用
 
 		if (!NetUtil.isConnectionAvailable(ct)) {
 			showToast("加载失败，请检查网络！");
+			callback.onFailure(new HttpException(), "无网络");
 		} else {
 			LogUtil.d(TAG, url);
 			http.send(method, url, params, callback);

@@ -67,4 +67,8 @@
     <!-- 自定义软键盘-->
     <color name="lightblack">#ff202020</color>
     <color name="reveal_color">#1b000000</color>
+
+
+    <!-- -->
+    <color name="light_pink">#f95c5c</color>
 </resources>

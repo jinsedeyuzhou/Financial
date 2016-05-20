@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.financial.android.R;
 import com.financial.android.adapter.ProjectsListAdapter;
 import com.financial.android.base.BaseFragment;
+import com.financial.android.bean.Product;
 import com.financial.android.bean.ProductInfo;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -29,7 +30,8 @@ import java.util.List;
 public class DirectFragment extends BaseFragment {
     @ViewInject(R.id.pull_refresh_list_direct)
     private PullToRefreshListView pull_refresh_list_direct;
-    private ArrayList<ProductInfo> productsList;
+
+    private ArrayList<Product> products;
     private ProjectsListAdapter plAdapter;
     
     @Override
@@ -41,11 +43,8 @@ public class DirectFragment extends BaseFragment {
 
     @Override
     protected void initData(Bundle savedInstanceState) {
-        productsList=new ArrayList<ProductInfo>();
-        ProductInfo pi1=new ProductInfo("lisi","30");
-        ProductInfo pi2=new ProductInfo("傻逼","50");
-        productsList.add(pi1);
-        productsList.add(pi2);
+        products=new ArrayList<Product>();
+
 
         pull_refresh_list_direct.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
@@ -70,31 +69,28 @@ public class DirectFragment extends BaseFragment {
             }
         });
         ListView listViewAssign = pull_refresh_list_direct.getRefreshableView();
-        plAdapter = new ProjectsListAdapter(ct, productsList, listViewAssign);
+        plAdapter = new ProjectsListAdapter(ct,products,listViewAssign);
         listViewAssign.setAdapter(plAdapter);
 
     }
 
 
-    private class GetDataTask extends AsyncTask<Void, Void, List<ProductInfo>>
+    private class GetDataTask extends AsyncTask<Void, Void, List<Product>>
     {
 
         @Override
-        protected List<ProductInfo> doInBackground(Void... params) {
+        protected List<Product> doInBackground(Void... params) {
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
             }
-            return productsList;
+            return products;
         }
 
         @Override
-        protected void onPostExecute(List<ProductInfo> result) {
+        protected void onPostExecute(List<Product> result) {
 
             //可以将productsList数据清除，重新加载请求后的数据
-            productsList.clear();
-            ProductInfo info2=new ProductInfo("天才","我就是个傻逼");
-            productsList.add(info2);
 
             plAdapter.notifyDataSetChanged();
             // Call onRefreshComplete when the list has been refreshed.

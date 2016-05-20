@@ -15,11 +15,10 @@ import com.lidroid.xutils.ViewUtils;
  */
 public class DescriptionFragment extends BaseFragment {
 
-    private View view;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
-        view = inflater.inflate(R.layout.frag_description,container,false);
+        View  view = inflater.inflate(R.layout.frag_description,container,false);
         ViewUtils.inject(this, view);
         return view;
     }

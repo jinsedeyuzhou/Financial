@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="@dimen/activity_margin_30"
+            android:layout_height="@dimen/activity_margin_30"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/icon" />
+
+        <TextView
+            android:id="@+id/tv_product_itemlist"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="九台农商稳赢 PRJ2015014" />
+
+        <TextView
+            android:id="@+id/tv_product_zhuan"
+            android:layout_width="@dimen/activity_margin_15"
+            android:layout_height="@dimen/activity_margin_15"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/shap_point_pink"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_10"
+            android:text="专"
+            android:textColor="@color/white" />
+        <TextView
+            android:id="@+id/tv_projects_assign"
+            android:layout_width="@dimen/activity_margin_15"
+            android:layout_height="@dimen/activity_margin_15"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/shap_point_orange"
+            android:gravity="center"
+            android:text="转"
+            android:textSize="@dimen/text_size_10"
+            android:textColor="@color/white"
+           />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/activity_margin_10"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="年化收益率"
+                    android:textColor="@color/grey"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_project_yield"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6.6%"
+                    android:textColor="@color/light_pink"
+                    android:textSize="@dimen/text_size_24" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="8dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="投资期限"
+                    android:textColor="@color/grey" />
+
+                <TextView
+                    android:id="@+id/tv_product_period"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7天"
+                    android:textSize="@dimen/text_size_16" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_product_status"
+                android:layout_width="@dimen/activity_margin_50"
+                android:layout_height="@dimen/activity_margin_50"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/activity_margin_15"
+                android:background="@drawable/shap_point_red"
+                android:gravity="center"
+                android:text="购买"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pb_product_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:max="100"
+        android:progressDrawable="@drawable/progressbarcolor"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_margin_30"
+        android:background="@color/gainsboro"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_product_minpayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="1000元起投"
+            />
+
+        <TextView
+            android:id="@+id/tv_product_suplus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:text="剩9.7万/100万"
+             />
+    </RelativeLayout>
+
+</LinearLayout>

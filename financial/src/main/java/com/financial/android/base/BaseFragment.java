@@ -6,11 +6,11 @@ import com.financial.android.utils.NetUtil;
 import com.financial.android.view.CustomProgressDialog;
 import com.financial.android.view.CustomToast;
 import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -42,7 +42,8 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		LogUtil.d(TAG, "oncreate");
-		ct = getActivity();
+		//放在这里也可以
+//		ct = getActivity();
 	}
 
 	public View getRootView() {
@@ -58,9 +59,9 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
 	}
 
 	@Override
-	public void onAttach(Activity activity) {
-		LogUtil.d(TAG, "onAttach");
-		super.onAttach(activity);
+	public void onAttach(Context context) {
+		super.onAttach(context);
+		ct=context;
 	}
 
 	@Override
@@ -73,7 +74,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
 	public void onStop() {
 		LogUtil.d(TAG, "onStop");
 		super.onStop();
-		
+
 	}
 	@Override
 	public void onResume() {
@@ -144,6 +145,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
 		// params.addHeader("x-channel", app.getChannel());
 
 		if (!NetUtil.isConnectionAvailable(ct)) {
+			callback.onFailure(new HttpException(), "无网络");
 			showToast("加载失败，请检查网络！");
 		} else {
 			LogUtil.d(TAG, url);
@@ -153,7 +155,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
 
 	/**
 	 * 自定义Toast
-	 * 
+	 *
 	 * @param msg
 	 */
 	protected void showToast(String msg) {
@@ -172,7 +174,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
 
 	/**
 	 * 展示进度条
-	 * 
+	 *
 	 * @param content
 	 */
 	protected void showProgressDialog(String content) {

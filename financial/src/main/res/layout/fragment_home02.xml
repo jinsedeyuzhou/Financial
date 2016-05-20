@@ -10,14 +10,14 @@
     <LinearLayout
         android:id="@+id/ll_banner"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="180dp"
         android:layout_below="@id/bar_rl_visible"
         android:orientation="vertical" >
 
         <FrameLayout
             android:id="@+id/framelayout"
             android:layout_width="match_parent"
-            android:layout_height="150dip"
+            android:layout_height="180dip"
             android:orientation="vertical" >
 
             <com.financial.android.view.ViewFlow
@@ -66,9 +66,9 @@
 	<!--由于这四个相同可以提取样式  -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:layout_margin="3dp"
-        android:background="@color/white"
+        android:background="@drawable/gridview_bg"
         android:orientation="horizontal" >
 
         <LinearLayout
@@ -84,6 +84,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="6"
                 android:src="@drawable/assets" />
 
@@ -106,6 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="6"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/bankcard" />
 
             <TextView
@@ -127,6 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="6"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/message" />
 
             <TextView
@@ -148,6 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="6"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/invest" />
 
             <TextView
@@ -198,7 +202,7 @@
             android:layout_height="wrap_content"
             android:horizontalSpacing="0.0dip"
             android:listSelector="@null"
-            android:numColumns="3"
+            android:numColumns="4"
             android:scrollbars="none"
             android:stretchMode="columnWidth"
             android:verticalSpacing="0.0dip"

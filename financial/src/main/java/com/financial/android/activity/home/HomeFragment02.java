@@ -94,9 +94,10 @@ public class HomeFragment02 extends BaseFragment {
     private View view;
     // 本地图片集合
     //GridView布局
-    private int[] imgIds = new int[]{R.drawable.sample_0, R.drawable.sample_1, R.drawable.sample_2, R.drawable.sample_3, R.drawable.sample_4,
-            R.drawable.sample_5, R.drawable.sample_6, R.drawable.sample_7};
-    private String[] title = new String[]{"1", "2", "3", "4", "5", "6", "7", "8"};
+    private int[] imgIds = new int[]{R.drawable.home_account, R.drawable.home_bankcard, R.drawable.home_assign,
+            R.drawable.home_calculator, R.drawable.home_activity, R.drawable.home_friends, R.drawable.home_message,R.drawable.home_loan,R.drawable.home_invest,
+            R.drawable.home_more};
+    private String[] title = new String[]{"我的钱包", "一键绑定", "债权转让", "计算器", "热门活动", "我的好友", "我的消息","我的钱包","项目列表", "更多"};
 
 
     //GridView集合
@@ -150,18 +151,14 @@ public class HomeFragment02 extends BaseFragment {
         titleList = new ArrayList<String>();
         dataSourceList = new ArrayList<HashMap<String, Object>>();
 
-        imageUrlList
-                .add("http://b.hiphotos.baidu.com/image/pic/item/d01373f082025aaf95bdf7e4f8edab64034f1a15.jpg");
-        imageUrlList
-                .add("http://g.hiphotos.baidu.com/image/pic/item/6159252dd42a2834da6660c459b5c9ea14cebf39.jpg");
+        imageUrlList.add("http://img2.mtime.cn/up/1077/213077/92A83395-C199-4311-8D97-D59C12A3BAD1_500.jpg");
+        imageUrlList.add("http://www.people.com.cn/mediafile/pic/20141012/24/12968181869281415500.jpg");
 
-        linkUrlArray
-                .add("http://blog.csdn.net/finddreams/article/details/44648121");
-        linkUrlArray
-                .add("http://blog.csdn.net/finddreams/article/details/44619589");
+        linkUrlArray.add("https://github.com/jinsedeyuzhou");
+        linkUrlArray.add("http://stackoverflow.com/users/5648747/jinsedeyuzhou");
 
-        titleList.add("常见Android进阶笔试题");
-        titleList.add("GridView之仿支付宝钱包首页");
+        titleList.add("GitHub常见实例");
+        titleList.add("常用的自定义控件");
 
         initBanner(imageUrlList);
         initRollNotice();
@@ -177,7 +174,7 @@ public class HomeFragment02 extends BaseFragment {
             GridViewItem gridItem = new GridViewItem(title[i], imgIds[i]);
             gridItemList.add(gridItem);
             HashMap<String, Object> itemHashMap = new HashMap<String, Object>();
-            itemHashMap.put("item_image",imgIds[i]);
+            itemHashMap.put("item_image", imgIds[i]);
             itemHashMap.put("item_text", title[i]);
             dataSourceList.add(itemHashMap);
         }
@@ -204,19 +201,19 @@ public class HomeFragment02 extends BaseFragment {
                         startActivity(intent);
                         break;
                     case 2:
-                        intent=new Intent(ct, LockActivity.class);
+                        intent = new Intent(ct, LockActivity.class);
                         startActivity(intent);
                         break;
                     case 3:
-                        intent=new Intent(ct, JavaScriptActivity.class);
+                        intent = new Intent(ct, JavaScriptActivity.class);
                         startActivity(intent);
                         break;
                     case 4:
-                        intent=new Intent(ct, GuideViewFlipper.class);
+                        intent = new Intent(ct, GuideViewFlipper.class);
                         startActivity(intent);
                         break;
                     case 5:
-                        intent=new Intent(ct,SpinnerSelectActivity.class);
+                        intent = new Intent(ct, SpinnerSelectActivity.class);
                         startActivity(intent);
                         break;
 
@@ -226,8 +223,6 @@ public class HomeFragment02 extends BaseFragment {
 
             }
         });
-
-
 
 
     }
@@ -241,8 +236,7 @@ public class HomeFragment02 extends BaseFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode==10)
-        {
+        if (resultCode == 10) {
             String cityName = data.getStringExtra("cityName");
             bar_tv_left.setText(cityName);
         }
@@ -263,6 +257,7 @@ public class HomeFragment02 extends BaseFragment {
 
     /**
      * 填充banner
+     *
      * @param imageUrlList
      */
     private void initBanner(ArrayList<String> imageUrlList) {

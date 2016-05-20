@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="傻逼的世界你永远不懂" />
+            android:text="没有压力就没有动力" />
     </RelativeLayout>
 
     <RelativeLayout

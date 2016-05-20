@@ -100,7 +100,7 @@ public class ProjectsFragment extends BaseFragment {
 		AssignmentFragment apf = new AssignmentFragment();
 		fragProjects.add(apf);
 		projects_viewpager.setOffscreenPageLimit(1); //设置缓存界面
-		projects_viewpager.setAdapter(new FXFragmentPagerAdapter(getFragmentManager(), fragProjects));
+		projects_viewpager.setAdapter(new FXFragmentPagerAdapter(getChildFragmentManager(), fragProjects));
 		projects_viewpager.setCurrentItem(0);
 		projects_viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 			@Override

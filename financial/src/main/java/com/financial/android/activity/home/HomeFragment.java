@@ -78,8 +78,9 @@ public class HomeFragment extends BaseFragment {
     private View view;
     // 本地图片集合
     //GridView布局
-    private int[] imgIds = new int[]{R.drawable.sample_0, R.drawable.sample_1, R.drawable.sample_2, R.drawable.sample_3, R.drawable.sample_4,
-            R.drawable.sample_5, R.drawable.sample_6, R.drawable.sample_7};
+    private int[] imgIds = new int[]{R.drawable.home_account, R.drawable.home_bankcard, R.drawable.home_assign,
+            R.drawable.message, R.drawable.home_activity, R.drawable.home_friends, R.drawable.home_message,
+            R.drawable.home_more};
     private String[] title = new String[]{"1", "2", "3", "4", "5", "6", "7", "8"};
     private ArrayList<GridViewItem> gridItemList;
 
