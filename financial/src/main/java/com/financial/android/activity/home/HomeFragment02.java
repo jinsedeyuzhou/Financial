@@ -2,6 +2,7 @@ package com.financial.android.activity.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -189,7 +190,7 @@ public class HomeFragment02 extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(getActivity(), "position" + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "position" + title[position], Toast.LENGTH_SHORT).show();
                 Intent intent = null;
                 switch (position) {
                     case 0:
