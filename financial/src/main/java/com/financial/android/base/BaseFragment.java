@@ -54,7 +54,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
 	public View onCreateView(LayoutInflater inflater,
 			 ViewGroup container, Bundle savedInstanceState) {
 		LogUtil.d(TAG, "onCreateView");
-		rootView = initView(inflater, container);
+	View	rootView = initView(inflater, container);
 		return rootView;
 	}
 
