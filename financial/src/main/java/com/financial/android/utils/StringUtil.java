@@ -38,6 +38,8 @@ public class StringUtil {
 		DecimalFormat df = new DecimalFormat("##.00%");
 		return df.format(d);
 	}
+
+
 	/**
 	 * 格式化输入百分数字符 如果位数不够可采用下面的方法 DecimalFormat percentFormat = new
 	 * DecimalFormat("##%");四舍五入保留整数

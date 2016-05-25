@@ -213,10 +213,10 @@ public class CircleProgressBar extends View {
             }
         }
 
-        if (currentProgress < progress) {
-            currentProgress += 1;
-            invalidate();
-        }
+//        if (currentProgress < progress) {
+//            currentProgress += 1;
+//            invalidate();
+//        }
 
     }
 
@@ -266,8 +266,10 @@ public class CircleProgressBar extends View {
         }
         if (progress<=max)
         {
-            this.progress=progress;
-            postInvalidate();
+//            this.progress=progress;
+//            postInvalidate();
+
+            setCurPercent(progress);
         }
     }
 
@@ -315,6 +317,29 @@ public class CircleProgressBar extends View {
         this.roundWidth = roundWidth;
     }
 
+    private void setCurPercent(int percent) {
 
+        progress = percent;
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int sleepTime = 1;
+                for (int i = 0; i <= progress; i++) {
+                    if (i % 20 == 0) {
+                        sleepTime += 2;
+                    }
+                    try {
+                        Thread.sleep(sleepTime);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    currentProgress = i;
+                    CircleProgressBar.this.postInvalidate();
+                }
+            }
+
+        }).start();
+    }
 
 }

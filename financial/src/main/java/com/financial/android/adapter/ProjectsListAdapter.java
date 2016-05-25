@@ -73,7 +73,7 @@ public class ProjectsListAdapter extends FXBaseAdapter<Product, ListView> {
         }
 
         holder.tv_product_minpayment.setText(product.getMinInvest() + "元起投");
-        holder.tv_product_suplus.setText("剩" + StringUtil.formatPercent(product.getSuplus() / 10000) + "万/" + StringUtil.formatPercent7(product.getMax_finance_money() / 10000) + "万");
+        holder.tv_product_suplus.setText("剩" + StringUtil.formatPercent7(product.getSuplus() / 10000) + "万/" + StringUtil.formatPercent7(product.getMax_finance_money() / 10000) + "万");
         holder.pb_product_progress.setProgress(Integer.valueOf(product.getProgress()));
 
         return convertView;
