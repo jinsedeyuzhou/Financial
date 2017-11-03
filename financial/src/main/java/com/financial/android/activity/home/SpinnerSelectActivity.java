@@ -19,8 +19,6 @@ import com.financial.android.base.BaseActivity;
 import com.financial.android.base.FXBaseAdapter;
 import com.financial.android.bean.Person;
 import com.financial.android.bean.ProvinceBean;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
@@ -348,7 +346,7 @@ public class SpinnerSelectActivity extends BaseActivity {
                 convertView=View.inflate(ct,R.layout.item_spinner,null);
 
                 holder=new ViewHolder(person);
-                ViewUtils.inject(holder, convertView);
+                holder.tv_spinner_name= (TextView) convertView.findViewById(R.id.tv_spinner_name);
                 convertView.setTag(holder);
             }
             else
@@ -364,7 +362,6 @@ public class SpinnerSelectActivity extends BaseActivity {
         class ViewHolder
         {
             private Person person;
-            @ViewInject(R.id.tv_spinner_name)
             private TextView tv_spinner_name;
 
             public ViewHolder(Person person) {

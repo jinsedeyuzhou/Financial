@@ -11,8 +11,6 @@ import com.financial.android.R;
 import com.financial.android.base.BaseActivity;
 import com.financial.android.base.FXBaseAdapter;
 import com.financial.android.bean.Message;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +86,7 @@ public class MessageActivity extends BaseActivity {
             if (convertView == null) {
                 convertView=View.inflate(context,R.layout.message_item,null);
                 holder=new ViewHolder(msg);
-                ViewUtils.inject(holder,convertView);
+                holder.tv_message= (TextView) convertView.findViewById(R.id.tv_message);
                 convertView.setTag(holder);
             } else {
                 convertView.getTag();
@@ -100,7 +98,6 @@ public class MessageActivity extends BaseActivity {
     }
 
     class ViewHolder {
-        @ViewInject(R.id.tv_message)
         private TextView tv_message;
         private Message msg;
 

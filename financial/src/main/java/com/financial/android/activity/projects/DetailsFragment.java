@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import com.financial.android.R;
 import com.financial.android.base.BaseFragment;
 import com.financial.android.view.CircleProgressBar;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
  * Created by wyy on 2016/1/27.
@@ -17,14 +15,13 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 public class DetailsFragment extends BaseFragment {
 
     private View view;
-    @ViewInject(R.id.circlr_progressbar)
     private CircleProgressBar circlr_progressbar;
     private int progress;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         view = inflater.inflate(R.layout.frag_details,container,false);
-        ViewUtils.inject(this, view);
+        circlr_progressbar= (CircleProgressBar) view.findViewById(R.id.circlr_progressbar);
         return view;
     }
 

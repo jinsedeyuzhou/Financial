@@ -37,8 +37,6 @@ import com.financial.android.utils.LogUtil;
 import com.financial.android.view.CircleFlowIndicator;
 import com.financial.android.view.DragGridView;
 import com.financial.android.view.ViewFlow;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,47 +46,33 @@ import java.util.TimerTask;
 
 public class HomeFragment02 extends BaseFragment {
 
-    @ViewInject(R.id.bar_tv_title)
     private TextView bar_tv_title;
     //	@ViewInject(R.id.bar_rl_visible)
 //	private RelativeLayout bar_rl_visible;
     // 设置左侧标题
-    @ViewInject(R.id.bar_tv_left)
     private TextView bar_tv_left;
-    @ViewInject(R.id.bar_rl_left)
     private RelativeLayout bar_rl_left;
     // 设置左侧图片
-    @ViewInject(R.id.bar_iv_left)
     private ImageView bar_iv_left;
     // 右侧bar
-    @ViewInject(R.id.bar_rl_right)
     private RelativeLayout bar_rl_right;
     // 右侧图片
-    @ViewInject(R.id.bar_iv_right)
     private ImageView bar_iv_right;
-    @ViewInject(R.id.main_notice)
     private FrameLayout main_notice;
     //gridview
-    @ViewInject(R.id.gridview)
 //    private CustomGridView gridview;
     private DragGridView gridview;
 
     // bannerview
-    @ViewInject(R.id.viewflow)
     private ViewFlow mViewFlow;
     private LinearLayout notice_ll;
     // 点
-    @ViewInject(R.id.viewflowindic)
     private CircleFlowIndicator mFlowIndicator;
 
     //线性布局
-    @ViewInject(R.id.ll_asset1)
     private LinearLayout ll_asset1;
-    @ViewInject(R.id.ll_bankcard1)
     private LinearLayout ll_bankcard1;
-    @ViewInject(R.id.ll_invest1)
     private LinearLayout ll_invest1;
-    @ViewInject(R.id.ll_message1)
     private LinearLayout ll_message1;
 
 
@@ -121,7 +105,31 @@ public class HomeFragment02 extends BaseFragment {
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         view = inflater.inflate(R.layout.fragment_home02, container, false);
-        ViewUtils.inject(this, view);
+
+        bar_tv_title= (TextView) view.findViewById(R.id.bar_tv_title);
+        // 设置左侧标题
+        bar_tv_left= (TextView) view.findViewById(R.id.bar_tv_left);
+        bar_rl_left= (RelativeLayout) view.findViewById(R.id.bar_rl_left);
+        // 设置左侧图片
+        bar_iv_left= (ImageView) view.findViewById(R.id.bar_iv_left);
+        // 右侧bar
+        bar_rl_right= (RelativeLayout) view.findViewById(R.id.bar_rl_right);
+        // 右侧图片
+        bar_iv_right= (ImageView) view.findViewById(R.id.bar_iv_right);
+        main_notice= (FrameLayout) view.findViewById(R.id.main_notice);
+        //gridview
+        gridview= (DragGridView) view.findViewById(R.id.gridview);
+
+        // bannerview
+        mViewFlow= (ViewFlow) view.findViewById(R.id.viewflow);
+        mFlowIndicator= (CircleFlowIndicator) view.findViewById(R.id.viewflowindic);
+
+        //线性布局
+        ll_asset1= (LinearLayout) view.findViewById(R.id.ll_asset1);
+        ll_bankcard1= (LinearLayout) view.findViewById(R.id.ll_bankcard1);
+        ll_invest1= (LinearLayout) view.findViewById(R.id.ll_invest1);
+        ll_message1= (LinearLayout) view.findViewById(R.id.ll_message1);
+
         initTitleBar();
         return view;
     }

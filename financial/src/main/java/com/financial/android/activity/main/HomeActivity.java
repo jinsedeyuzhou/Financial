@@ -9,11 +9,7 @@ import com.financial.android.activity.home.HomeFragment02;
 import com.financial.android.activity.projects.ProjectsFragment;
 import com.financial.android.base.BaseActivity;
 import com.financial.android.base.FXFragmentPagerAdapter;
-import com.financial.android.restful.config.service.MyPushIntentService;
 import com.financial.android.view.CustomViewPager;
-import com.umeng.message.IUmengRegisterCallback;
-import com.umeng.message.PushAgent;
-import com.umeng.message.UmengRegistrar;
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -56,7 +52,6 @@ public class HomeActivity extends BaseActivity {
 			isExit = false;
 		}
 	};
-	private PushAgent mPushAgent;
 	private ServiceRecevier serviceRecevier;
 
 //	private void initTitleBar() {
@@ -71,26 +66,12 @@ public class HomeActivity extends BaseActivity {
 	@Override
 	public void initView() {
 		setContentView(R.layout.activity_home);
-		mPushAgent = PushAgent.getInstance(this);
-		PushAgent.getInstance(getApplicationContext()).onAppStart();
 		//开启推送并设置注册的回调处理
-		mPushAgent.enable(new IUmengRegisterCallback() {
-
-			@Override
-			public void onRegistered(String registrationId) {
-				//onRegistered方法的参数registrationId即是device_token
-
-				System.out.println("registrationId:" + registrationId);
-			}
-		});
-		String device_token = UmengRegistrar.getRegistrationId(this);
-		System.out.println("device_token:" + device_token);
 		serviceRecevier = new ServiceRecevier();
 		IntentFilter intentFilter = new IntentFilter();
 		intentFilter.addAction("com.study.shabi");
 		registerReceiver(serviceRecevier, intentFilter);
 //		mPushAgent.setPushIntentServiceClass(MyPushIntentService.class);
-		mPushAgent.setPushIntentServiceClass(null);
 
 //		initTitleBar();
 		viewPager = (CustomViewPager) findViewById(R.id.home_viewpager);

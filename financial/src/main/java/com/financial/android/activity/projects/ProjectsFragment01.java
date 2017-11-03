@@ -20,12 +20,6 @@ import com.financial.android.base.BaseFragment;
 import com.financial.android.base.FXBaseAdapter;
 import com.financial.android.bean.ProductInfo;
 import com.financial.android.utils.LogUtil;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnLastItemVisibleListener;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,17 +32,12 @@ import java.util.List;
 public class ProjectsFragment01 extends BaseFragment {
 
 	private View view;
-	@ViewInject(R.id.bar_tv_title)
 	private TextView bar_tv_title;
-	@ViewInject(R.id.bar_rl_visible)
 	private RelativeLayout bar_rl_visible;
 
 	// spinner
-	@ViewInject(R.id.Spinner1)
 	private Spinner spinner1;
-	@ViewInject(R.id.Spinner2)
 	private Spinner spinner2;
-	@ViewInject(R.id.Spinner3)
 	private Spinner spinner3;
 
 	// listView
@@ -57,9 +46,7 @@ public class ProjectsFragment01 extends BaseFragment {
 	
 	
 	//android-pullToRefreshListActivity
-	@ViewInject(R.id.pull_refresh_list)
-	private PullToRefreshListView	mPullRefreshListView;
-	
+
 	//数据源 
 	private ArrayList<ProductInfo> productsList;
 	private ProjectsListAdapter plAdapter;
@@ -67,7 +54,11 @@ public class ProjectsFragment01 extends BaseFragment {
 	@Override
 	protected View initView(LayoutInflater inflater, ViewGroup container) {
 		view = inflater.inflate(R.layout.fragment_projects01, container, false);
-		ViewUtils.inject(this, view);
+		bar_tv_title= (TextView) view.findViewById(R.id.bar_tv_title);
+		bar_rl_visible= (RelativeLayout) view.findViewById(R.id.bar_rl_visible);
+		spinner1= (Spinner) view.findViewById(R.id.Spinner1);
+		spinner2= (Spinner) view.findViewById(R.id.Spinner2);
+		spinner3= (Spinner) view.findViewById(R.id.Spinner3);
 		initTitleBar();
 		LogUtil.d("BaseFragment", "ProjectsFragment");
 		return view;
@@ -136,31 +127,7 @@ public class ProjectsFragment01 extends BaseFragment {
 		
 		
 		
-		//android-pullToRefreshListActivity
-		// Set a listener to be invoked when the list should be refreshed.
-		mPullRefreshListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
 
-			@Override
-			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-				new GetDataTask().execute();
-			}
-		});
-		
-		// Add an end-of-list listener
-		mPullRefreshListView.setOnLastItemVisibleListener(new OnLastItemVisibleListener() {
-
-			@Override
-			public void onLastItemVisible() {
-				showToast("End of List!");
-			}
-		});
-		
-		ListView actualListView = mPullRefreshListView.getRefreshableView();
-		
-		
-		plAdapter = new ProjectsListAdapter(ct, productsList, actualListView);
-		actualListView.setAdapter(plAdapter);
-		
 	}
 
 	
@@ -187,7 +154,6 @@ public class ProjectsFragment01 extends BaseFragment {
 			
 			plAdapter.notifyDataSetChanged();
 			// Call onRefreshComplete when the list has been refreshed.
-			mPullRefreshListView.onRefreshComplete();
 
 			super.onPostExecute(result);
 		}
@@ -228,7 +194,8 @@ public class ProjectsFragment01 extends BaseFragment {
 				convertView = View.inflate(context, R.layout.product_item,
 						null);
 				holder = new ViewHolder(product);
-				ViewUtils.inject(holder, convertView);
+				holder.mProcutName= (TextView) convertView.findViewById(R.id.tv_product_name);
+				holder.mProDescription= (TextView) convertView.findViewById(R.id.tv_product_description);
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
@@ -241,9 +208,7 @@ public class ProjectsFragment01 extends BaseFragment {
 		}
 
 		class ViewHolder {
-			@ViewInject(R.id.tv_product_name)
 			TextView mProcutName;
-			@ViewInject(R.id.tv_product_description)
 			TextView mProDescription;
 
 			private ProductInfo card;

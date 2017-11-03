@@ -13,8 +13,6 @@ import com.financial.android.R;
 import com.financial.android.base.FXBaseAdapter;
 import com.financial.android.bean.GridViewItem;
 
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
  * fragment主页 gridview适配
@@ -39,11 +37,10 @@ public class GridViewItemAdapter extends FXBaseAdapter<GridViewItem, GridView> {
 		if (convertView == null) {
 			convertView = View.inflate(context, R.layout.gridview_item, null);
 			holder = new ViewHolder(gridItem);
-			 ViewUtils.inject(holder, convertView);
-//			holder.img = (ImageView) convertView
-//					.findViewById(R.id.iv_home_gridview);
-//			holder.tv_name = (TextView) convertView
-//					.findViewById(R.id.tv_gridview_name);
+			holder.img = (ImageView) convertView
+					.findViewById(R.id.iv_home_gridview);
+			holder.tv_name = (TextView) convertView
+					.findViewById(R.id.tv_gridview_name);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -56,9 +53,7 @@ public class GridViewItemAdapter extends FXBaseAdapter<GridViewItem, GridView> {
 	}
 
 	class ViewHolder {
-		 @ViewInject(R.id.iv_home_gridview)
 		ImageView img;
-		 @ViewInject(R.id.tv_gridview_name)
 		TextView tv_name;
 		private GridViewItem gridItem;
 		

@@ -25,11 +25,6 @@ import com.financial.android.utils.LogUtil;
 import com.financial.android.utils.NetUtil;
 import com.financial.android.view.CustomProgressDialog;
 import com.financial.android.view.CustomToast;
-import com.lidroid.xutils.HttpUtils;
-import com.lidroid.xutils.exception.HttpException;
-import com.lidroid.xutils.http.RequestParams;
-import com.lidroid.xutils.http.callback.RequestCallBack;
-import com.lidroid.xutils.http.client.HttpRequest;
 import com.umeng.analytics.MobclickAgent;
 
 /**
@@ -187,32 +182,6 @@ public abstract class BaseActivity extends FragmentActivity implements
 		processClick(v);
 	}
 
-	protected void loadData(HttpRequest.HttpMethod method, String url,
-			RequestParams params, RequestCallBack<String> callback) {
-
-		HttpUtils http = new HttpUtils();
-		http.configCurrentHttpCacheExpiry(0);
-
-		LogUtil.LOG_LEVEL = 6;
-		if (params != null) {
-			if (params.getQueryStringParams() != null)
-				LogUtil.d(TAG, url + "?"
-						+ params.getQueryStringParams().toString());
-		} else {
-			params = new RequestParams();
-
-		}
-		params.addHeader("x-deviceid", app.getDeviceId());
-//		 params.addHeader("x-channel", app.getChannel()); 渠道推送时有用
-
-		if (!NetUtil.isConnectionAvailable(ct)) {
-			showToast("加载失败，请检查网络！");
-			callback.onFailure(new HttpException(), "无网络");
-		} else {
-			LogUtil.d(TAG, url);
-			http.send(method, url, params, callback);
-		}
-	}
 
 	/**
 	 * 自定义Toast

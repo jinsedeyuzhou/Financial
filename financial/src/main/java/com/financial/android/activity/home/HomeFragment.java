@@ -38,8 +38,6 @@ import com.financial.android.adapter.GridViewItemAdapter;
 import com.financial.android.base.BaseFragment;
 import com.financial.android.bean.GridViewItem;
 import com.financial.android.view.RefreshListView;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -49,29 +47,19 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
  */
 public class HomeFragment extends BaseFragment {
 
-    @ViewInject(R.id.bar_tv_title)
     private TextView bar_tv_title;
-    @ViewInject(R.id.bar_rl_visible)
     private RelativeLayout bar_rl_visible;
-    @ViewInject(R.id.viewpager)
     private ViewPager viewpager;
     // 设置左侧标题
-    @ViewInject(R.id.bar_tv_left)
     private TextView bar_tv_left;
-    @ViewInject(R.id.bar_rl_left)
     private RelativeLayout bar_rl_left;
     // 设置左侧图片
-    @ViewInject(R.id.bar_iv_left)
     private ImageView bar_iv_left;
     // 右侧bar
-    @ViewInject(R.id.bar_rl_right)
     private RelativeLayout bar_rl_right;
     // 右侧图片
-    @ViewInject(R.id.bar_iv_right)
     private ImageView bar_iv_right;
-    @ViewInject(R.id.main_notice)
     private FrameLayout main_notice;
-    @ViewInject(R.id.gridview)
     private GridView gridview;
 
 
@@ -127,7 +115,21 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        ViewUtils.inject(this, view);
+        bar_tv_title = (TextView) view.findViewById(R.id.bar_tv_title);
+        bar_rl_visible = (RelativeLayout) view.findViewById(R.id.bar_rl_visible);
+        viewpager= (ViewPager) view.findViewById(R.id.viewpager);
+        // 设置左侧标题
+        bar_tv_left= (TextView) view.findViewById(R.id.bar_tv_left);
+        bar_rl_left= (RelativeLayout) view.findViewById(R.id.bar_rl_left);
+        // 设置左侧图片
+        bar_iv_left= (ImageView) view.findViewById(R.id.bar_iv_left);
+        // 右侧bar
+        bar_rl_right= (RelativeLayout) view.findViewById(R.id.bar_rl_right);
+        // 右侧图片
+        bar_iv_right= (ImageView) view.findViewById(R.id.bar_iv_right);
+        main_notice= (FrameLayout) view.findViewById(R.id.main_notice);
+        gridview= (GridView) view.findViewById(R.id.gridview);
+
         initTitleBar();
         return view;
     }

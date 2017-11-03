@@ -14,35 +14,35 @@ import com.financial.android.activity.login.LoginActivity;
 import com.financial.android.activity.other.WebViewActivity;
 import com.financial.android.base.BaseFragment;
 import com.financial.android.utils.LogUtil;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 public class AccountFragment extends BaseFragment {
 
-    @ViewInject(R.id.bar_tv_title)
+
     private TextView bar_tv_title;
-    @ViewInject(R.id.bar_rl_visible)
     private RelativeLayout bar_rl_visible;
 
     // 头像
-    @ViewInject(R.id.iv_icon_head)
     private ImageView mIconHead;
     // 消息
-    @ViewInject(R.id.rl_account_message)
     private RelativeLayout rl_account_message;
     // 设置
-    @ViewInject(R.id.rl_account_setting)
     private RelativeLayout rl_account_setting;
     //钱包
-    @ViewInject(R.id.rl_account_wallet)
     private RelativeLayout rl_account_wallet;
     private View view;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         view = inflater.inflate(R.layout.fragment_account, container, false);
-        ViewUtils.inject(this, view);
+        bar_tv_title = (TextView) view.findViewById(R.id.bar_tv_title);
+        bar_rl_visible = (RelativeLayout) view.findViewById(R.id.bar_rl_visible);
+        mIconHead = (ImageView) view.findViewById(R.id.iv_icon_head);
+        rl_account_message = (RelativeLayout) view.findViewById(R.id.rl_account_message);
+        rl_account_setting = (RelativeLayout) view.findViewById(R.id.rl_account_setting);
+        rl_account_wallet = (RelativeLayout) view.findViewById(R.id.rl_account_wallet);
         LogUtil.d("BaseFragment", "AccountFragment");
+
+
         rl_account_message.setOnClickListener(this);
         rl_account_setting.setOnClickListener(this);
         rl_account_wallet.setOnClickListener(this);
@@ -72,15 +72,15 @@ public class AccountFragment extends BaseFragment {
                 startActivity(intent);
                 break;
             case R.id.rl_account_setting:
-                 intent=new Intent(ct,SettingActivity.class);
-                 startActivity(intent);
+                intent = new Intent(ct, SettingActivity.class);
+                startActivity(intent);
                 break;
             case R.id.iv_icon_head:
                 intent = new Intent(ct, LoginActivity.class);
                 startActivity(intent);
                 break;
             case R.id.rl_account_wallet:
-                intent=new Intent(ct,WalletActivity.class);
+                intent = new Intent(ct, WalletActivity.class);
                 startActivity(intent);
                 break;
             default:

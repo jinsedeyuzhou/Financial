@@ -12,8 +12,6 @@ import android.widget.TextView;
 import com.financial.android.R;
 import com.financial.android.bean.GridViewItem;
 import com.financial.android.view.DragGridBaseAdapter;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -57,7 +55,8 @@ public class DragAdapter extends BaseAdapter implements DragGridBaseAdapter {
         ViewHolder holder = null;
         convertView = View.inflate(context, R.layout.gridview_item, null);
         holder = new ViewHolder();
-        ViewUtils.inject(holder, convertView);
+        holder.img= (ImageView) convertView.findViewById(R.id.iv_home_gridview);
+        holder.tv_name= (TextView) convertView.findViewById(R.id.tv_gridview_name);
         holder.img.setImageResource((Integer) list.get(position).get("item_image"));
         holder.tv_name.setText((CharSequence) list.get(position).get("item_text"));
 
@@ -75,9 +74,7 @@ public class DragAdapter extends BaseAdapter implements DragGridBaseAdapter {
     }
 
     class ViewHolder {
-        @ViewInject(R.id.iv_home_gridview)
         ImageView img;
-        @ViewInject(R.id.tv_gridview_name)
         TextView tv_name;
 
 

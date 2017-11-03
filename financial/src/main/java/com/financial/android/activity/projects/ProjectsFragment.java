@@ -17,8 +17,6 @@ import com.financial.android.R;
 import com.financial.android.base.BaseFragment;
 import com.financial.android.base.FXFragmentPagerAdapter;
 import com.financial.android.utils.LogUtil;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 
@@ -30,16 +28,11 @@ import java.util.ArrayList;
 public class ProjectsFragment extends BaseFragment {
 
 	private View view;
-	@ViewInject(R.id.bar_tv_title)
 	private TextView bar_tv_title;
-	@ViewInject(R.id.bar_rl_visible)
 	private RelativeLayout bar_rl_visible;
 
-	@ViewInject(R.id.projects_viewpager)
 	private ViewPager projects_viewpager;
-	@ViewInject(R.id.rg_projects)
 	private RadioGroup rg_projects;
-	@ViewInject(R.id.iv_cursor)
 	private ImageView iv_cursor;
 	private ArrayList<Fragment> fragProjects;
 	// 当前选中fragment
@@ -58,7 +51,11 @@ public class ProjectsFragment extends BaseFragment {
 	@Override
 	protected View initView(LayoutInflater inflater, ViewGroup container) {
 		view = inflater.inflate(R.layout.fragment_projects, container, false);
-		ViewUtils.inject(this, view);
+		bar_tv_title= (TextView) view.findViewById(R.id.bar_tv_title);
+		bar_rl_visible= (RelativeLayout) view.findViewById(R.id.bar_rl_visible);
+		projects_viewpager= (ViewPager) view.findViewById(R.id.projects_viewpager);
+		rg_projects= (RadioGroup) view.findViewById(R.id.rg_projects);
+		iv_cursor= (ImageView) view.findViewById(R.id.iv_cursor);
 		initTitleBar();
 		LogUtil.d("BaseFragment", "ProjectsFragment");
 		return view;
