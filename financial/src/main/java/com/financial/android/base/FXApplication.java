@@ -1,12 +1,19 @@
 package com.financial.android.base;
 
+import com.financial.android.R;
 import com.financial.android.activity.login.LoginActivity;
 import com.financial.android.activity.main.HomeActivity;
 import com.financial.android.bean.AccessToken;
 import com.financial.android.bean.UserInfo;
 import com.financial.android.utils.AppManager;
+import com.financial.android.utils.DynamicTimeFormat;
 import com.financial.android.utils.SharePrefUtil;
 import com.financial.android.utils.LockPatternUtils;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreater;
+import com.scwang.smartrefresh.layout.api.RefreshHeader;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.umeng.socialize.PlatformConfig;
 
 import android.app.Application;
@@ -16,6 +23,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatDelegate;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
@@ -37,6 +46,18 @@ public class FXApplication extends Application {
 	private AccessToken accessToken;
 	private UserInfo userInfo;
 
+
+	static {
+		AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+		SmartRefreshLayout.setDefaultRefreshHeaderCreater(new DefaultRefreshHeaderCreater() {
+			@NonNull
+			@Override
+			public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
+				layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);//全局设置主题颜色
+				return new ClassicsHeader(context).setTimeFormat(new DynamicTimeFormat("更新于 %s"));
+			}
+		});
+	}
 	/**
 	 * token是否失效，或者是否可用 判断
 	 * 

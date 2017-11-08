@@ -1,5 +1,6 @@
 package com.financial.android.activity.projects;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
@@ -23,8 +24,14 @@ public class ProductActivity extends BaseActivity {
     private FXFragmentPagerAdapter adapter;
 
     @Override
-    public void initView() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
+    }
+
+    @Override
+    public void initView() {
+
         directional_viewpager = (DirectionalViewPager) findViewById(R.id.directional_viewpager);
         directional_viewpager.setOrientation(DirectionalViewPager.HORIZONTAL);
         fragments=new ArrayList<Fragment>();
@@ -39,6 +46,11 @@ public class ProductActivity extends BaseActivity {
 
     @Override
     public void initData() {
+
+    }
+
+    @Override
+    protected void bindEvent() {
 
     }
 

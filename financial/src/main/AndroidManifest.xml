@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.financial.android"
-    android:versionCode="1"
-    android:versionName="1.0">
-    <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="23"
-        />
+    package="com.financial.android">
+
+
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE"/>
     <!--统计-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <!--share-->
@@ -49,31 +45,31 @@
             </intent-filter>
         </activity>
         <!-- main -->
-        <activity android:name=".activity.main.HomeActivity"></activity>
+        <activity android:name=".activity.main.HomeActivity"/>
         <activity android:name=".activity.other.WebViewActivity" />
         <activity android:name=".activity.other.JavaScriptActivity"/>
         <!-- welcome -->
-        <activity android:name=".activity.welcome.LockSetupActivity"></activity>
-        <activity android:name=".activity.welcome.LockActivity"></activity>
-        <activity android:name=".activity.welcome.GuideViewActivity"></activity>
+        <activity android:name=".activity.welcome.LockSetupActivity"/>
+        <activity android:name=".activity.welcome.LockActivity"/>
+        <activity android:name=".activity.welcome.GuideViewActivity"/>
         <activity android:name=".activity.welcome.GuideGesturePasswordActivity" />
         <activity android:name=".activity.welcome.GuideViewFlipper"/>
         <!-- login -->
-        <activity android:name=".activity.login.LoginActivity"></activity>
-        <activity android:name=".activity.login.RegisterActivity"></activity>
-        <activity android:name=".activity.login.LostPasswdActivity"></activity>
+        <activity android:name=".activity.login.LoginActivity"/>
+        <activity android:name=".activity.login.RegisterActivity"/>
+        <activity android:name=".activity.login.LostPasswdActivity"/>
         <!-- home -->
-        <activity android:name=".activity.home.PositionActivity"></activity>
+        <activity android:name=".activity.home.PositionActivity"/>
         <activity android:name=".activity.home.HelpActivity" />
         <activity android:name=".activity.home.RefreshListViewActivity" />
         <activity android:name=".activity.home.BarcodeActivity"/>
         <activity android:name=".activity.home.SpinnerSelectActivity"/>
 
         <!-- account -->
-        <activity android:name=".activity.account.SettingActivity"></activity>
-        <activity android:name=".activity.account.PersonalActivity"></activity>
-        <activity android:name=".activity.account.MessageActivity"></activity>
-        <activity android:name=".activity.account.WalletActivity"></activity>
+        <activity android:name=".activity.account.SettingActivity"/>
+        <activity android:name=".activity.account.PersonalActivity"/>
+        <activity android:name=".activity.account.MessageActivity"/>
+        <activity android:name=".activity.account.WalletActivity"/>
         <!-- projects -->
         <activity android:name=".activity.projects.ProductActivity" />
         <activity android:name=".activity.projects.ShowActivity" />
@@ -82,13 +78,13 @@
         <activity android:name=".activity.test.VerticalViewPagerActivity" />
         <activity android:name=".activity.test.VerticalViewActivity" />
 
-        <service android:name=".restful.config.service.MyPushIntentService"
-            android:process=":push"></service>
+        <!--<service android:name=".restful.config.service.MyPushIntentService"-->
+            <!--android:process=":push"/>-->
         <service android:name=".restful.config.service.NotificationService"/>
 
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="56dff55ae0f55a52700005bd"></meta-data>
+            android:value="56dff55ae0f55a52700005bd"/>
         <meta-data
             android:name="UMENG_MESSAGE_SECRET"
             android:value="3dfa6260e04541951ec43efa9b049a5b ">
@@ -125,7 +121,9 @@
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+             />
+
+        <activity android:name=".activity.effects.PersonCtenterActivity"/>
 
     </application>
 

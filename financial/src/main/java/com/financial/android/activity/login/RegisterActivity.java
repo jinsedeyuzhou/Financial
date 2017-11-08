@@ -3,6 +3,7 @@ package com.financial.android.activity.login;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.InputType;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,8 +29,14 @@ public class RegisterActivity extends BaseActivity {
     private ClearEditText et_pass_register;
 
     @Override
-    public void initView() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+    }
+
+    @Override
+    public void initView() {
+
         initTitleBar();
         et_username_register = (ClearEditText) findViewById(R.id.et_username_register);
         et_pass_register = (ClearEditText) findViewById(R.id.et_pass_register);
@@ -69,6 +76,11 @@ public class RegisterActivity extends BaseActivity {
     @Override
     public void initData() {
         timeCount=new TimeCount(120000, 1000, tv_register_smscode);
+
+    }
+
+    @Override
+    protected void bindEvent() {
 
     }
 

@@ -2,6 +2,7 @@ package com.financial.android.activity.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -50,8 +51,14 @@ public class PositionActivity extends BaseActivity {
     private TextView tv_total;
 
     @Override
-    public void initView() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_position);
+    }
+
+    @Override
+    public void initView() {
+
         initTitleBar();
 
         //实例化汉字转拼音类
@@ -147,6 +154,11 @@ public class PositionActivity extends BaseActivity {
 
     @Override
     public void initData() {
+
+    }
+
+    @Override
+    protected void bindEvent() {
 
     }
 

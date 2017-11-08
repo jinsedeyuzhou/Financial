@@ -1,5 +1,6 @@
 package com.financial.android.activity.test;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
@@ -19,9 +20,16 @@ import java.util.ArrayList;
 public class VerticalViewPagerActivity extends BaseActivity {
     private ArrayList<Fragment> fragments;
     private FXFragmentPagerAdapter adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_bank);
+    }
+
     @Override
     public void initView() {
-        setContentView(R.layout.activity_bank);
+
         VerticalViewPager vertical = (VerticalViewPager) findViewById(R.id.vertical);
         fragments=new ArrayList<Fragment>();
         DescriptionFragment df=new DescriptionFragment();
@@ -34,6 +42,11 @@ public class VerticalViewPagerActivity extends BaseActivity {
 
     @Override
     public void initData() {
+
+    }
+
+    @Override
+    protected void bindEvent() {
 
     }
 

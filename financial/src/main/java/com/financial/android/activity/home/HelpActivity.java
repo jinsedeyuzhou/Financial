@@ -2,6 +2,7 @@ package com.financial.android.activity.home;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -41,9 +42,16 @@ public class HelpActivity extends BaseActivity {
     static final private int PULL_To_REFRESH = 1;
     static final private int REFRESHING = 2;
     static final private int DONE = 3;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_help);
+    }
+
     @Override
     public void initView() {
-        setContentView(R.layout.activity_help);
+
 
     }
 
@@ -154,6 +162,11 @@ public class HelpActivity extends BaseActivity {
                 }
             }
         });
+
+    }
+
+    @Override
+    protected void bindEvent() {
 
     }
 

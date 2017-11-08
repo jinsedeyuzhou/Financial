@@ -29,10 +29,20 @@ public class AssignmentFragment extends BaseFragment {
     private ArrayList<Product> products;
     private ProjectsListAdapter plAdapter;
 
+
     @Override
-    protected View initView(LayoutInflater inflater, ViewGroup container) {
-     View view = inflater.inflate(R.layout.frag_assignment_projects,container,false);
-        return view;
+    protected void bindEvent() {
+
+    }
+
+    @Override
+    protected int getLayoutID() {
+        return R.layout.frag_assignment_projects;
+    }
+
+    @Override
+    protected void initView(View view) {
+
     }
 
     @Override

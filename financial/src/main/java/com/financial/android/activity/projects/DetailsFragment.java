@@ -18,11 +18,20 @@ public class DetailsFragment extends BaseFragment {
     private CircleProgressBar circlr_progressbar;
     private int progress;
 
+
     @Override
-    protected View initView(LayoutInflater inflater, ViewGroup container) {
-        view = inflater.inflate(R.layout.frag_details,container,false);
+    protected void bindEvent() {
+
+    }
+
+    @Override
+    protected int getLayoutID() {
+        return R.layout.frag_details;
+    }
+
+    @Override
+    protected void initView(View view) {
         circlr_progressbar= (CircleProgressBar) view.findViewById(R.id.circlr_progressbar);
-        return view;
     }
 
     @Override

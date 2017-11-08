@@ -63,9 +63,18 @@ public class DirectFragment extends BaseFragment {
     };
 
     @Override
-    protected View initView(LayoutInflater inflater, ViewGroup container) {
-        View view = inflater.inflate(R.layout.frag_direct_projects, container, false);
-        return view;
+    protected void bindEvent() {
+
+    }
+
+    @Override
+    protected int getLayoutID() {
+        return R.layout.frag_direct_projects;
+    }
+
+    @Override
+    protected void initView(View view) {
+
     }
 
     @Override

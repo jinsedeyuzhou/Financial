@@ -1,6 +1,7 @@
 package com.financial.android.activity.account;
 
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,8 +18,14 @@ import com.financial.android.base.BaseActivity;
 public class SettingActivity extends BaseActivity {
 
 	@Override
-	public void initView() {
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setting);
+	}
+
+	@Override
+	public void initView() {
+
 		initTitleBar();
 	}
 
@@ -35,6 +42,11 @@ public class SettingActivity extends BaseActivity {
 
 	@Override
 	public void initData() {
+
+	}
+
+	@Override
+	protected void bindEvent() {
 
 	}
 

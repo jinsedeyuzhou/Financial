@@ -40,17 +40,22 @@ public class ProjectsFragment extends BaseFragment {
 	//屏幕宽度
 	private int screenWidth;
 
-
-
-
-
-
-
-
+	private void initTitleBar() {
+		bar_tv_title.setText("投资");
+	}
 
 	@Override
-	protected View initView(LayoutInflater inflater, ViewGroup container) {
-		view = inflater.inflate(R.layout.fragment_projects, container, false);
+	protected void bindEvent() {
+
+	}
+
+	@Override
+	protected int getLayoutID() {
+		return R.layout.fragment_projects;
+	}
+
+	@Override
+	protected void initView(View view) {
 		bar_tv_title= (TextView) view.findViewById(R.id.bar_tv_title);
 		bar_rl_visible= (RelativeLayout) view.findViewById(R.id.bar_rl_visible);
 		projects_viewpager= (ViewPager) view.findViewById(R.id.projects_viewpager);
@@ -58,11 +63,6 @@ public class ProjectsFragment extends BaseFragment {
 		iv_cursor= (ImageView) view.findViewById(R.id.iv_cursor);
 		initTitleBar();
 		LogUtil.d("BaseFragment", "ProjectsFragment");
-		return view;
-	}
-
-	private void initTitleBar() {
-		bar_tv_title.setText("投资");
 	}
 
 	@Override

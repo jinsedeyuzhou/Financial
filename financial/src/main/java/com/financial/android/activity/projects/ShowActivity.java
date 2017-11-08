@@ -1,5 +1,6 @@
 package com.financial.android.activity.projects;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.financial.android.R;
@@ -11,13 +12,24 @@ import com.financial.android.base.BaseActivity;
 public class ShowActivity extends BaseActivity {
 
     @Override
-    public void initView() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show);
+    }
+
+    @Override
+    public void initView() {
+
 
     }
 
     @Override
     public void initData() {
+
+    }
+
+    @Override
+    protected void bindEvent() {
 
     }
 
