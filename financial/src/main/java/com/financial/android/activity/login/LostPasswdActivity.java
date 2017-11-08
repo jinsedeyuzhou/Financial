@@ -21,8 +21,14 @@ public class LostPasswdActivity extends BaseActivity {
 
 
     @Override
-    public void initView() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passwd_lost);
+    }
+
+    @Override
+    public void initView() {
+
         initTitleBar();
     }
 
@@ -41,6 +47,11 @@ public class LostPasswdActivity extends BaseActivity {
 
     @Override
     public void initData() {
+
+    }
+
+    @Override
+    protected void bindEvent() {
 
     }
 

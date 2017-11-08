@@ -1,6 +1,7 @@
 package com.financial.android.activity.account;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -25,8 +26,13 @@ public class MessageActivity extends BaseActivity {
     private TextView bar_tv_title;
 
     @Override
-    public void initView() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
+    }
+
+    @Override
+    public void initView() {
         initTitleBar();
         listview_message = (ListView) findViewById(R.id.listview_message);
 
@@ -57,6 +63,11 @@ public class MessageActivity extends BaseActivity {
 
         msgAdapter = new MessageAdapter(ct,msgs,listview_message);
         listview_message.setAdapter(msgAdapter);
+    }
+
+    @Override
+    protected void bindEvent() {
+
     }
 
     @Override

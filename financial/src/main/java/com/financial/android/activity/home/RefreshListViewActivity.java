@@ -2,6 +2,7 @@ package com.financial.android.activity.home;
 
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,8 +31,13 @@ public class RefreshListViewActivity extends BaseActivity implements OnRefreshLi
     private TextView bar_tv_title;
 
     @Override
-    public void initView() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refresh_listview);
+    }
+
+    @Override
+    public void initView() {
         initTitleBar();
         refresh_listview = (RefreshListView) findViewById(R.id.refresh_listview);
         textList = new ArrayList<String>();
@@ -128,6 +134,11 @@ public class RefreshListViewActivity extends BaseActivity implements OnRefreshLi
     }
     @Override
     public void initData() {
+
+    }
+
+    @Override
+    protected void bindEvent() {
 
     }
 

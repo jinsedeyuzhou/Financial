@@ -9,7 +9,9 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.support.annotation.LayoutRes;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -31,7 +33,7 @@ import com.umeng.analytics.MobclickAgent;
  * @author wyy
  * 
  */
-public abstract class BaseActivity extends FragmentActivity implements
+public abstract class BaseActivity extends AppCompatActivity implements
 		OnClickListener {
 	private static final String TAG = "BaseActivity";
 	private static final int ACTIVITY_RESUME = 0;
@@ -90,10 +92,27 @@ public abstract class BaseActivity extends FragmentActivity implements
 		app = (FXApplication) getApplication();
 		// 未知
 		nojump = false;
+	}
+
+	@Override
+	public void setContentView(@LayoutRes int layoutResID) {
+		super.setContentView(layoutResID);
 		initView();
+		bindEvent();
 		initData();
 	}
-	
+
+
+
+	@Override
+	public void setContentView(View view) {
+		super.setContentView(view);
+		initView();
+		bindEvent();
+		initData();
+	}
+
+
 	/**
 	 * 设置跳转
 	 */
@@ -166,6 +185,8 @@ public abstract class BaseActivity extends FragmentActivity implements
 	public abstract void initView();
 
 	public abstract void initData();
+
+	protected abstract void bindEvent();
 
 	public abstract void processClick(View v);
 

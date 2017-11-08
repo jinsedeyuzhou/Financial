@@ -2,15 +2,11 @@ package com.financial.android.activity.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.DragEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.FrameLayout;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -20,6 +16,7 @@ import android.widget.ViewFlipper;
 
 import com.financial.android.R;
 import com.financial.android.activity.account.SettingActivity;
+import com.financial.android.activity.effects.PersonCenterActivity;
 import com.financial.android.activity.other.JavaScriptActivity;
 import com.financial.android.activity.other.WebViewActivity;
 import com.financial.android.activity.test.VerticalViewActivity;
@@ -80,9 +77,9 @@ public class HomeFragment02 extends BaseFragment {
     // 本地图片集合
     //GridView布局
     private int[] imgIds = new int[]{R.drawable.home_account, R.drawable.home_bankcard, R.drawable.home_assign,
-            R.drawable.home_calculator, R.drawable.home_activity, R.drawable.home_friends, R.drawable.home_message,R.drawable.home_loan,R.drawable.home_invest,
+            R.drawable.home_calculator, R.drawable.home_activity, R.drawable.home_friends, R.drawable.home_message, R.drawable.home_loan, R.drawable.home_invest,
             R.drawable.home_more};
-    private String[] title = new String[]{"我的钱包", "一键绑定", "债权转让", "计算器", "热门活动", "我的好友", "我的消息","我的钱包","项目列表", "更多"};
+    private String[] title = new String[]{"我的钱包", "一键绑定", "债权转让", "计算器", "热门活动", "我的好友", "我的消息", "我的钱包", "项目列表", "更多"};
 
 
     //GridView集合
@@ -102,37 +99,6 @@ public class HomeFragment02 extends BaseFragment {
 
     private List<HashMap<String, Object>> dataSourceList;
 
-    @Override
-    protected View initView(LayoutInflater inflater, ViewGroup container) {
-        view = inflater.inflate(R.layout.fragment_home02, container, false);
-
-        bar_tv_title= (TextView) view.findViewById(R.id.bar_tv_title);
-        // 设置左侧标题
-        bar_tv_left= (TextView) view.findViewById(R.id.bar_tv_left);
-        bar_rl_left= (RelativeLayout) view.findViewById(R.id.bar_rl_left);
-        // 设置左侧图片
-        bar_iv_left= (ImageView) view.findViewById(R.id.bar_iv_left);
-        // 右侧bar
-        bar_rl_right= (RelativeLayout) view.findViewById(R.id.bar_rl_right);
-        // 右侧图片
-        bar_iv_right= (ImageView) view.findViewById(R.id.bar_iv_right);
-        main_notice= (FrameLayout) view.findViewById(R.id.main_notice);
-        //gridview
-        gridview= (DragGridView) view.findViewById(R.id.gridview);
-
-        // bannerview
-        mViewFlow= (ViewFlow) view.findViewById(R.id.viewflow);
-        mFlowIndicator= (CircleFlowIndicator) view.findViewById(R.id.viewflowindic);
-
-        //线性布局
-        ll_asset1= (LinearLayout) view.findViewById(R.id.ll_asset1);
-        ll_bankcard1= (LinearLayout) view.findViewById(R.id.ll_bankcard1);
-        ll_invest1= (LinearLayout) view.findViewById(R.id.ll_invest1);
-        ll_message1= (LinearLayout) view.findViewById(R.id.ll_message1);
-
-        initTitleBar();
-        return view;
-    }
 
     /**
      * 设置Title
@@ -225,6 +191,10 @@ public class HomeFragment02 extends BaseFragment {
                         intent = new Intent(ct, SpinnerSelectActivity.class);
                         startActivity(intent);
                         break;
+                    case 6:
+                        intent=new Intent(ct, PersonCenterActivity.class);
+                        startActivity(intent);
+                        break;
 
                     default:
                         break;
@@ -236,6 +206,16 @@ public class HomeFragment02 extends BaseFragment {
 
     }
 
+
+    @Override
+    protected void bindEvent() {
+
+    }
+
+    @Override
+    protected int getLayoutID() {
+        return R.layout.fragment_home02;
+    }
 
     @Override
     public void onStart() {
@@ -262,6 +242,35 @@ public class HomeFragment02 extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
+    }
+
+    @Override
+    protected void initView(View view) {
+        bar_tv_title = (TextView) view.findViewById(R.id.bar_tv_title);
+        // 设置左侧标题
+        bar_tv_left = (TextView) view.findViewById(R.id.bar_tv_left);
+        bar_rl_left = (RelativeLayout) view.findViewById(R.id.bar_rl_left);
+        // 设置左侧图片
+        bar_iv_left = (ImageView) view.findViewById(R.id.bar_iv_left);
+        // 右侧bar
+        bar_rl_right = (RelativeLayout) view.findViewById(R.id.bar_rl_right);
+        // 右侧图片
+        bar_iv_right = (ImageView) view.findViewById(R.id.bar_iv_right);
+        main_notice = (FrameLayout) view.findViewById(R.id.main_notice);
+        //gridview
+        gridview = (DragGridView) view.findViewById(R.id.gridview);
+
+        // bannerview
+        mViewFlow = (ViewFlow) view.findViewById(R.id.viewflow);
+        mFlowIndicator = (CircleFlowIndicator) view.findViewById(R.id.viewflowindic);
+
+        //线性布局
+        ll_asset1 = (LinearLayout) view.findViewById(R.id.ll_asset1);
+        ll_bankcard1 = (LinearLayout) view.findViewById(R.id.ll_bankcard1);
+        ll_invest1 = (LinearLayout) view.findViewById(R.id.ll_invest1);
+        ll_message1 = (LinearLayout) view.findViewById(R.id.ll_message1);
+
+        initTitleBar();
     }
 
     /**

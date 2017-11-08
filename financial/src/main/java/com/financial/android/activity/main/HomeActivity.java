@@ -17,6 +17,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -60,12 +61,19 @@ public class HomeActivity extends BaseActivity {
 //		bar_rl_visible = (RelativeLayout) findViewById(R.id.bar_rl_visible);
 //	}
 
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_home);
+	}
+
 	/*
-	 * 初始化界面
-	 */
+         * 初始化界面
+         */
 	@Override
 	public void initView() {
-		setContentView(R.layout.activity_home);
+
 		//开启推送并设置注册的回调处理
 		serviceRecevier = new ServiceRecevier();
 		IntentFilter intentFilter = new IntentFilter();
@@ -195,6 +203,11 @@ public class HomeActivity extends BaseActivity {
 
 	@Override
 	public void initData() {
+
+	}
+
+	@Override
+	protected void bindEvent() {
 
 	}
 

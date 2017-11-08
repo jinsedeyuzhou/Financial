@@ -51,9 +51,23 @@ public class ProjectsFragment01 extends BaseFragment {
 	private ArrayList<ProductInfo> productsList;
 	private ProjectsListAdapter plAdapter;
 	
+
+	private void initTitleBar() {
+		bar_tv_title.setText("投资");
+	}
+
 	@Override
-	protected View initView(LayoutInflater inflater, ViewGroup container) {
-		view = inflater.inflate(R.layout.fragment_projects01, container, false);
+	protected void bindEvent() {
+
+	}
+
+	@Override
+	protected int getLayoutID() {
+		return R.layout.fragment_projects01;
+	}
+
+	@Override
+	protected void initView(View view) {
 		bar_tv_title= (TextView) view.findViewById(R.id.bar_tv_title);
 		bar_rl_visible= (RelativeLayout) view.findViewById(R.id.bar_rl_visible);
 		spinner1= (Spinner) view.findViewById(R.id.Spinner1);
@@ -61,11 +75,6 @@ public class ProjectsFragment01 extends BaseFragment {
 		spinner3= (Spinner) view.findViewById(R.id.Spinner3);
 		initTitleBar();
 		LogUtil.d("BaseFragment", "ProjectsFragment");
-		return view;
-	}
-
-	private void initTitleBar() {
-		bar_tv_title.setText("投资");
 	}
 
 	@Override

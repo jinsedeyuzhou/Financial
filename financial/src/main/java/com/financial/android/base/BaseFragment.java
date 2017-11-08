@@ -8,6 +8,7 @@ import com.financial.android.view.CustomToast;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,184 +17,196 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 
 public abstract class BaseFragment extends Fragment implements OnClickListener {
-	private static final String TAG = "BaseFragment";
-	protected Context ct;
-	protected FXApplication app;
+    private static final String TAG = "BaseFragment";
+    protected Context ct;
+    protected FXApplication app;
 
-	protected View loadingView;
-	protected LinearLayout loadfailView;
+    protected View loadingView;
+    protected LinearLayout loadfailView;
 
-	protected View rootView;
+    protected View rootView;
 
-	@Override
-	public void onActivityCreated( Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		LogUtil.d(TAG, "onActivityCreated");
-		app = (FXApplication) getActivity().getApplication();
-		initData(savedInstanceState);
-	}
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        LogUtil.d(TAG, "onActivityCreated");
+        app = (FXApplication) getActivity().getApplication();
+    }
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		LogUtil.d(TAG, "oncreate");
-		//放在这里也可以
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        LogUtil.d(TAG, "oncreate");
+        //放在这里也可以
 //		ct = getActivity();
-	}
+    }
 
-	public View getRootView() {
-		return rootView;
-	}
+    public View getRootView() {
+        return rootView;
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater,
-			 ViewGroup container, Bundle savedInstanceState) {
-		LogUtil.d(TAG, "onCreateView");
-	View	rootView = initView(inflater, container);
-		return rootView;
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        rootView = inflater.inflate(getLayoutID(), container, false);
+        return rootView;
+    }
 
-	@Override
-	public void onAttach(Context context) {
-		super.onAttach(context);
-		ct=context;
-	}
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initView(view);
+        bindEvent();
+        initData(savedInstanceState);
+    }
 
-	@Override
-	public void onStart() {
-		LogUtil.d(TAG, "onStart");
-		super.onStart();
-	}
+    protected abstract void bindEvent();
 
-	@Override
-	public void onStop() {
-		LogUtil.d(TAG, "onStop");
-		super.onStop();
+    protected abstract int getLayoutID();
 
-	}
-	@Override
-	public void onResume() {
-		LogUtil.d(TAG, "onResume");
-		super.onResume();
-	}
+    protected abstract void initView(View view);
 
-	@Override
-	public void onPause() {
-		LogUtil.d(TAG, "onPause");
-		super.onPause();
-	}
+    protected abstract void initData(Bundle savedInstanceState);
 
-	@Override
-	public void onDestroyView() {
-		LogUtil.d(TAG, "onDestroyView");
-		super.onDestroyView();
-	}
+    protected abstract void processClick(View v);
 
-	@Override
-	public void onDetach() {
-		LogUtil.d(TAG, "onDetach");
-		super.onDetach();
-	}
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        ct = context;
+    }
 
-	@Override
-	public void onDestroy() {
-		LogUtil.d(TAG, "onDestroy");
-		super.onDestroy();
-	}
+    @Override
+    public void onStart() {
+        LogUtil.d(TAG, "onStart");
+        super.onStart();
+    }
 
-	protected abstract View initView(LayoutInflater inflater,
-			ViewGroup container);
+    @Override
+    public void onStop() {
+        LogUtil.d(TAG, "onStop");
+        super.onStop();
 
-	protected abstract void initData(Bundle savedInstanceState);
+    }
 
-	protected abstract void processClick(View v);
+    @Override
+    public void onResume() {
+        LogUtil.d(TAG, "onResume");
+        super.onResume();
+    }
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case 0:
+    @Override
+    public void onPause() {
+        LogUtil.d(TAG, "onPause");
+        super.onPause();
+    }
 
-			break;
+    @Override
+    public void onDestroyView() {
+        LogUtil.d(TAG, "onDestroyView");
+        super.onDestroyView();
+    }
 
-		default:
-			break;
-		}
-		processClick(v);
-	}
+    @Override
+    public void onDetach() {
+        LogUtil.d(TAG, "onDetach");
+        super.onDetach();
+    }
 
-	/**
-	 * 自定义Toast
-	 *
-	 * @param msg
-	 */
-	protected void showToast(String msg) {
-		showToast(msg, 0);
-	}
+    @Override
+    public void onDestroy() {
+        LogUtil.d(TAG, "onDestroy");
+        super.onDestroy();
+    }
 
-	protected void showToast(String msg, int time) {
-		CustomToast customToast = new CustomToast(ct, msg, time);
-		customToast.show();
-	}
 
-	/**
-	 * 自定义进度条
-	 */
-	protected CustomProgressDialog dialog;
 
-	/**
-	 * 展示进度条
-	 *
-	 * @param content
-	 */
-	protected void showProgressDialog(String content) {
-		if (dialog == null && ct != null) {
-			dialog = (CustomProgressDialog) DialogUtil.createProgressDialog(ct,
-					content);
-		}
-		dialog.show();
-	}
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case 0:
 
-	/**
-	 * 关闭进度条
-	 */
-	protected void closeProgressDialog() {
-		if (dialog != null)
-			dialog.dismiss();
-	}
+                break;
 
-	/**
-	 * 加载成功，展示
-	 */
-	public void showLoadingView() {
-		if (loadingView != null)
-			loadingView.setVisibility(View.VISIBLE);
-	}
+            default:
+                break;
+        }
+        processClick(v);
+    }
 
-	/**
-	 * 加载成功，完成消失展示
-	 */
-	public void dismissLoadingView() {
-		if (loadingView != null)
-			loadingView.setVisibility(View.INVISIBLE);
-	}
+    /**
+     * 自定义Toast
+     *
+     * @param msg
+     */
+    protected void showToast(String msg) {
+        showToast(msg, 0);
+    }
 
-	/**
-	 * 加载失败，展示
-	 */
-	public void showLoadFailView() {
-		if (loadingView != null) {
-			loadingView.setVisibility(View.VISIBLE);
-			loadfailView.setVisibility(View.VISIBLE);
-		}
+    protected void showToast(String msg, int time) {
+        CustomToast customToast = new CustomToast(ct, msg, time);
+        customToast.show();
+    }
 
-	}
+    /**
+     * 自定义进度条
+     */
+    protected CustomProgressDialog dialog;
 
-	/**
-	 * 加载失败，完成消失展示
-	 */
-	public void dismissLoadFailView() {
-		if (loadingView != null)
-			loadfailView.setVisibility(View.INVISIBLE);
-	}
+    /**
+     * 展示进度条
+     *
+     * @param content
+     */
+    protected void showProgressDialog(String content) {
+        if (dialog == null && ct != null) {
+            dialog = (CustomProgressDialog) DialogUtil.createProgressDialog(ct,
+                    content);
+        }
+        dialog.show();
+    }
+
+    /**
+     * 关闭进度条
+     */
+    protected void closeProgressDialog() {
+        if (dialog != null)
+            dialog.dismiss();
+    }
+
+    /**
+     * 加载成功，展示
+     */
+    public void showLoadingView() {
+        if (loadingView != null)
+            loadingView.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * 加载成功，完成消失展示
+     */
+    public void dismissLoadingView() {
+        if (loadingView != null)
+            loadingView.setVisibility(View.INVISIBLE);
+    }
+
+    /**
+     * 加载失败，展示
+     */
+    public void showLoadFailView() {
+        if (loadingView != null) {
+            loadingView.setVisibility(View.VISIBLE);
+            loadfailView.setVisibility(View.VISIBLE);
+        }
+
+    }
+
+    /**
+     * 加载失败，完成消失展示
+     */
+    public void dismissLoadFailView() {
+        if (loadingView != null)
+            loadfailView.setVisibility(View.INVISIBLE);
+    }
 
 }

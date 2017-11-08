@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -38,8 +39,14 @@ public class GuideViewActivity extends BaseActivity {
 	private Button mGuide;
 
 	@Override
-	public void initView() {
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guide);
+	}
+
+	@Override
+	public void initView() {
+
 		views = new ArrayList<View>();
 		mViewPager = (ViewPager) findViewById(R.id.guide_viewpagers);
 		mGuideViewPagerAdapter = new GuideViewPagerAdapter(views,pics);
@@ -144,6 +151,11 @@ public class GuideViewActivity extends BaseActivity {
 		});
 		// 初始化底部小点
 //		 initPoint();
+	}
+
+	@Override
+	protected void bindEvent() {
+
 	}
 
 	/**

@@ -112,27 +112,6 @@ public class HomeFragment extends BaseFragment {
 
     };
 
-    @Override
-    protected View initView(LayoutInflater inflater, ViewGroup container) {
-        view = inflater.inflate(R.layout.fragment_home, container, false);
-        bar_tv_title = (TextView) view.findViewById(R.id.bar_tv_title);
-        bar_rl_visible = (RelativeLayout) view.findViewById(R.id.bar_rl_visible);
-        viewpager= (ViewPager) view.findViewById(R.id.viewpager);
-        // 设置左侧标题
-        bar_tv_left= (TextView) view.findViewById(R.id.bar_tv_left);
-        bar_rl_left= (RelativeLayout) view.findViewById(R.id.bar_rl_left);
-        // 设置左侧图片
-        bar_iv_left= (ImageView) view.findViewById(R.id.bar_iv_left);
-        // 右侧bar
-        bar_rl_right= (RelativeLayout) view.findViewById(R.id.bar_rl_right);
-        // 右侧图片
-        bar_iv_right= (ImageView) view.findViewById(R.id.bar_iv_right);
-        main_notice= (FrameLayout) view.findViewById(R.id.main_notice);
-        gridview= (GridView) view.findViewById(R.id.gridview);
-
-        initTitleBar();
-        return view;
-    }
 
     /**
      * 设置Title
@@ -211,6 +190,16 @@ public class HomeFragment extends BaseFragment {
 
     }
 
+
+    @Override
+    protected void bindEvent() {
+
+    }
+
+    @Override
+    protected int getLayoutID() {
+        return R.layout.fragment_home;
+    }
 
     @Override
     public void onStart() {
@@ -401,6 +390,25 @@ public class HomeFragment extends BaseFragment {
         super.onDestroy();
 
 
+    }
+
+    @Override
+    protected void initView(View view) {
+        bar_tv_title = (TextView) view.findViewById(R.id.bar_tv_title);
+        bar_rl_visible = (RelativeLayout) view.findViewById(R.id.bar_rl_visible);
+        viewpager= (ViewPager) view.findViewById(R.id.viewpager);
+        // 设置左侧标题
+        bar_tv_left= (TextView) view.findViewById(R.id.bar_tv_left);
+        bar_rl_left= (RelativeLayout) view.findViewById(R.id.bar_rl_left);
+        // 设置左侧图片
+        bar_iv_left= (ImageView) view.findViewById(R.id.bar_iv_left);
+        // 右侧bar
+        bar_rl_right= (RelativeLayout) view.findViewById(R.id.bar_rl_right);
+        // 右侧图片
+        bar_iv_right= (ImageView) view.findViewById(R.id.bar_iv_right);
+        main_notice= (FrameLayout) view.findViewById(R.id.main_notice);
+        gridview= (GridView) view.findViewById(R.id.gridview);
+        initTitleBar();
     }
 
 

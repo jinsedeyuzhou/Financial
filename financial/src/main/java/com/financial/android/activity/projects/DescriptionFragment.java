@@ -15,10 +15,20 @@ import com.financial.android.base.BaseFragment;
 public class DescriptionFragment extends BaseFragment {
 
 
+
     @Override
-    protected View initView(LayoutInflater inflater, ViewGroup container) {
-        View  view = inflater.inflate(R.layout.frag_description,container,false);
-        return view;
+    protected void bindEvent() {
+
+    }
+
+    @Override
+    protected int getLayoutID() {
+        return R.layout.frag_description;
+    }
+
+    @Override
+    protected void initView(View view) {
+
     }
 
     @Override

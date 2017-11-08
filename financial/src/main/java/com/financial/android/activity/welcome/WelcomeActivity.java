@@ -1,6 +1,7 @@
 package com.financial.android.activity.welcome;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
@@ -35,8 +36,14 @@ public class WelcomeActivity extends BaseActivity {
 	};
 
 	@Override
-	public void initView() {
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.welcome);
+	}
+
+	@Override
+	public void initView() {
+
 		// 渐入动画
 //		mSplash = (ImageView) findViewById(R.id.iv_splash);
 //		AlphaAnimation anim = new AlphaAnimation(0, 1);
@@ -55,6 +62,11 @@ public class WelcomeActivity extends BaseActivity {
 		} else {
 			handler.sendEmptyMessageDelayed(ENTER_HOME, 2000);
 		}
+	}
+
+	@Override
+	protected void bindEvent() {
+
 	}
 
 	@Override

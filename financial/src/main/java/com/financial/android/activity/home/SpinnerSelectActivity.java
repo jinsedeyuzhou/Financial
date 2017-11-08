@@ -1,6 +1,7 @@
 package com.financial.android.activity.home;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,8 +53,14 @@ public class SpinnerSelectActivity extends BaseActivity {
 
 
     @Override
-    public void initView() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_spinner);
+    }
+
+    @Override
+    public void initView() {
+
         initTitleBar();
         spinner_country = (Spinner) findViewById(R.id.spinner_country);
         spinner_city = (Spinner) findViewById(R.id.spinner_city);
@@ -235,6 +242,11 @@ public class SpinnerSelectActivity extends BaseActivity {
            }
        });
         initSpinner();
+
+    }
+
+    @Override
+    protected void bindEvent() {
 
     }
 

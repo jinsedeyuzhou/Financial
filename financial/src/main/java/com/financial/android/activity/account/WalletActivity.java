@@ -56,8 +56,14 @@ public class WalletActivity extends BaseActivity {
     private int mScreenWidth = 0;
 
     @Override
-    public void initView() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallet);
+    }
+
+    @Override
+    public void initView() {
+
         initTitleBar();
 
         //初始化控件
@@ -213,6 +219,10 @@ public class WalletActivity extends BaseActivity {
         });
     }
 
+    @Override
+    protected void bindEvent() {
+
+    }
 
 
     @Override

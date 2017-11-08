@@ -1,5 +1,6 @@
 package com.financial.android.activity.test;
 
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,8 +31,14 @@ public class VerticalViewActivity extends BaseActivity {
    private VerticalPagerAdapter baseAdapter;
 
     @Override
-    public void initView() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vertical);
+    }
+
+    @Override
+    public void initView() {
+
         LayoutInflater inflater = getLayoutInflater();
         pageViews = new ArrayList<View>();
         verticalViews1 = new ArrayList<View>();
@@ -66,6 +73,11 @@ public class VerticalViewActivity extends BaseActivity {
 
     @Override
     public void initData() {
+
+    }
+
+    @Override
+    protected void bindEvent() {
 
     }
 

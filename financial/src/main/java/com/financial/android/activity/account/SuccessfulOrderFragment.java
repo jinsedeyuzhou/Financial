@@ -13,13 +13,19 @@ import com.financial.android.base.BaseFragment;
  */
 public class SuccessfulOrderFragment extends BaseFragment {
 
-    private View view;
+    @Override
+    protected void bindEvent() {
+
+    }
 
     @Override
-    protected View initView(LayoutInflater inflater, ViewGroup container) {
-        view = inflater.inflate(R.layout.frag_successful_order,container,false);
+    protected int getLayoutID() {
+        return R.layout.frag_successful_order;
+    }
 
-        return view;
+    @Override
+    protected void initView(View view) {
+
     }
 
     @Override

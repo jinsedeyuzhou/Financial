@@ -29,11 +29,27 @@ public class AccountFragment extends BaseFragment {
     private RelativeLayout rl_account_setting;
     //钱包
     private RelativeLayout rl_account_wallet;
-    private View view;
+
+
+    /**
+     * 设置标题
+     */
+    private void initTitleBar() {
+        bar_tv_title.setText("我的账户");
+    }
 
     @Override
-    protected View initView(LayoutInflater inflater, ViewGroup container) {
-        view = inflater.inflate(R.layout.fragment_account, container, false);
+    protected void bindEvent() {
+
+    }
+
+    @Override
+    protected int getLayoutID() {
+        return R.layout.fragment_account;
+    }
+
+    @Override
+    protected void initView(View view) {
         bar_tv_title = (TextView) view.findViewById(R.id.bar_tv_title);
         bar_rl_visible = (RelativeLayout) view.findViewById(R.id.bar_rl_visible);
         mIconHead = (ImageView) view.findViewById(R.id.iv_icon_head);
@@ -48,14 +64,6 @@ public class AccountFragment extends BaseFragment {
         rl_account_wallet.setOnClickListener(this);
         mIconHead.setOnClickListener(this);
         initTitleBar();
-        return view;
-    }
-
-    /**
-     * 设置标题
-     */
-    private void initTitleBar() {
-        bar_tv_title.setText("我的账户");
     }
 
     @Override
