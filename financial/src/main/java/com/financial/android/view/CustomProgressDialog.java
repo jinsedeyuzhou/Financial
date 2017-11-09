@@ -19,12 +19,16 @@ public class CustomProgressDialog extends ProgressDialog {
 	private String content;
 	private TextView progress_dialog_content;
 
+
+
 	public CustomProgressDialog(Context context, String content) {
-		super(context);
+		this(context,content, R.style.Dialog);
+	}
+	public CustomProgressDialog(Context context, String content, int theme) {
+		super(context, theme);
 		this.content = content;
 		setCanceledOnTouchOutside(false);
 	}
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

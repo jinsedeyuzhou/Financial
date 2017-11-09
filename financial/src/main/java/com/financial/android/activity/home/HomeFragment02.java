@@ -2,15 +2,11 @@ package com.financial.android.activity.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.DragEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.FrameLayout;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -20,6 +16,9 @@ import android.widget.ViewFlipper;
 
 import com.financial.android.R;
 import com.financial.android.activity.account.SettingActivity;
+import com.financial.android.activity.effects.BannerActivity;
+import com.financial.android.activity.effects.PersonCenterActivity;
+import com.financial.android.activity.effects.RePastActivity;
 import com.financial.android.activity.other.JavaScriptActivity;
 import com.financial.android.activity.other.WebViewActivity;
 import com.financial.android.activity.test.VerticalViewActivity;
@@ -192,6 +191,18 @@ public class HomeFragment02 extends BaseFragment {
                         break;
                     case 5:
                         intent = new Intent(ct, SpinnerSelectActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 6:
+                        intent = new Intent(ct, PersonCenterActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 7:
+                        intent = new Intent(ct, RePastActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 8:
+                        intent=new Intent(ct, BannerActivity.class);
                         startActivity(intent);
                         break;
 

@@ -193,13 +193,15 @@
         </LinearLayout>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
+
     <com.github.mmin18.widget.RealtimeBlurView
         android:id="@+id/blurview"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:visibility="visible"
-        app:realtimeOverlayColor="@android:color/transparent" />
+        app:realtimeOverlayColor="@android:color/transparent"
 
+        />
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         style="@style/AppTheme.Toolbar"

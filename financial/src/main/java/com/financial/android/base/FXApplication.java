@@ -14,6 +14,7 @@ import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreater;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.squareup.leakcanary.LeakCanary;
 import com.umeng.socialize.PlatformConfig;
 
 import android.app.Application;
@@ -24,6 +25,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.multidex.MultiDex;
 import android.support.v7.app.AppCompatDelegate;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
@@ -112,6 +114,13 @@ public class FXApplication extends Application {
 		if (firstLaunch == true) {
 			SharePrefUtil.saveBoolean(getApplicationContext(), SharePrefUtil.KEY.FIRST_LAUNCH, true);
 		}
+
+		if (LeakCanary.isInAnalyzerProcess(this)) {
+			// This process is dedicated to LeakCanary for heap analysis.
+			// You should not init your app in this process.
+			return;
+		}
+		LeakCanary.install(this);
 	}
 
 
@@ -183,6 +192,12 @@ public class FXApplication extends Application {
 //			SharePrefUtil.saveObj(getApplicationContext(),
 //					SharePrefUtil.KEY.USER_INFO, userInfo);
 //		}
+	}
+
+	protected void attachBaseContext(Context context) {
+		super.attachBaseContext(context);
+		//支持超过65535
+		MultiDex.install(this);
 	}
 	public LockPatternUtils getLockPatternUtils() {
 		return mLockPatternUtils;
