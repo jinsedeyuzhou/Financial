@@ -30,6 +30,7 @@ public class IssueActivity extends BaseActivity {
     private List quesList;
     private List answList;
     private ExpandableAdapter mElAdapter;
+    private RelativeLayout bar_rl_left;
 
     @Override
     protected void onCreate(Bundle paramBundle) {
@@ -47,7 +48,7 @@ public class IssueActivity extends BaseActivity {
      * 设置标题
      */
     private void initTitleBar() {
-        RelativeLayout bar_rl_left = (RelativeLayout) findViewById(R.id.bar_rl_left);
+        bar_rl_left = (RelativeLayout) findViewById(R.id.bar_rl_left);
         bar_rl_left.setVisibility(View.VISIBLE);
         bar_rl_left.setOnClickListener(this);
         TextView bar_tv_title = (TextView) findViewById(R.id.bar_tv_title);
@@ -57,12 +58,10 @@ public class IssueActivity extends BaseActivity {
 
     @Override
     protected void bindEvent() {
-        mTitleBack.setOnClickListener(this);
     }
 
     @Override
     public void initData() {
-        mTitleName.setText("常见问题");
         Resources res = getResources();
         quesList = Arrays.asList(res.getStringArray(R.array.question_array));
         answList = Arrays.asList(res.getStringArray(R.array.answer_array));

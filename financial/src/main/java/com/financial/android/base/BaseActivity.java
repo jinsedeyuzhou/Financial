@@ -71,6 +71,9 @@ public abstract class BaseActivity extends AppCompatActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		LogUtil.i(TAG, "onCreate");
+		if (isNeedAnimation()) {
+			overridePendingTransition(R.anim.anim_enter, R.anim.anim_exit);
+		}
 		// 竖屏锁定
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		// 软件盘模式
@@ -92,6 +95,10 @@ public abstract class BaseActivity extends AppCompatActivity implements
 		app = (FXApplication) getApplication();
 		// 未知
 		nojump = false;
+	}
+
+	private boolean isNeedAnimation() {
+		return true;
 	}
 
 	@Override
@@ -126,6 +133,14 @@ public abstract class BaseActivity extends AppCompatActivity implements
 	protected void initTitleBar(String title,int visible1,int visible2) {
 		titleTv = (TextView) findViewById(R.id.bar_tv_title);
 
+	}
+
+	@Override
+	public void finish() {
+		super.finish();
+		if (isNeedAnimation()) {
+			overridePendingTransition(R.anim.close_anim_enter, R.anim.close_anim_exit);
+		}
 	}
 
 	/**
