@@ -17,6 +17,8 @@ import android.widget.ViewFlipper;
 import com.financial.android.R;
 import com.financial.android.activity.account.SettingActivity;
 import com.financial.android.activity.effects.BannerActivity;
+import com.financial.android.activity.effects.CardFoldActivity;
+import com.financial.android.activity.effects.IssueActivity;
 import com.financial.android.activity.effects.PersonCenterActivity;
 import com.financial.android.activity.effects.RePastActivity;
 import com.financial.android.activity.other.JavaScriptActivity;
@@ -170,7 +172,7 @@ public class HomeFragment02 extends BaseFragment {
                 Intent intent = null;
                 switch (position) {
                     case 0:
-                        intent = new Intent(ct, LockSetupActivity.class);
+                        intent = new Intent(ct, CardFoldActivity.class);
                         startActivity(intent);
                         break;
                     case 1:
@@ -205,6 +207,10 @@ public class HomeFragment02 extends BaseFragment {
                         intent=new Intent(ct, BannerActivity.class);
                         startActivity(intent);
                         break;
+
+                    case 9:
+                        intent=new Intent(ct, IssueActivity.class);
+                        startActivity(intent);
 
                     default:
                         break;

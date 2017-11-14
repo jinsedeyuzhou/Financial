@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/shap_point_blue"
+            android:gravity="center"
+            android:text="A"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_answ_explist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
+            android:text="感谢您的来信，为了保障您的利益，请您提供您的支付宝账户，我们为您核实处理，感谢您的支持与配合。如果您仍有其他问题，请给我们发送邮件，我们将非常乐意为您提供帮助。祝您生活愉快。" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gainsboro"/>
+</LinearLayout>

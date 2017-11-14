@@ -216,6 +216,8 @@ public class SpinnerSelectActivity extends BaseActivity {
                         + options3Items.get(options1).get(option2).get(options3);
                 btn_city_select.setText(tx);
 //                vMasker.setVisibility(View.GONE);
+
+
             }
         });
 
@@ -224,7 +226,7 @@ public class SpinnerSelectActivity extends BaseActivity {
 
         spinner_country.setAdapter(adapter);
         spinner_country.setGravity(Gravity.CENTER);
-       spinner_country.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinner_country.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
            @Override
            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                showToast("position" + personList.get(position).toString());
@@ -277,9 +279,8 @@ public class SpinnerSelectActivity extends BaseActivity {
         schoolAdapter = new ArrayAdapter<String>(ct,
                 android.R.layout.simple_spinner_item, city[3]);
         spinner_school.setAdapter(schoolAdapter);
-        spinner_city.setGravity(Gravity.CENTER_HORIZONTAL);
+        spinner_city.setGravity(Gravity.CENTER);
         spinner_school.setSelection(0, true);  //默认选中第0个
-
 
         spinner_city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

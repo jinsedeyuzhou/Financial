@@ -127,6 +127,8 @@
         <activity android:name=".activity.effects.PersonCenterActivity"/>
         <activity android:name=".activity.effects.RePastActivity"/>
         <activity android:name=".activity.effects.BannerActivity"/>
+        <activity android:name=".activity.effects.IssueActivity"/>
+        <activity android:name=".activity.effects.CardFoldActivity"/>
 
     </application>
 

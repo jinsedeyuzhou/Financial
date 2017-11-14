@@ -112,6 +112,7 @@
     <orderEntry type="library" exported="" name="support-media-compat-26.0.0-alpha1" level="project" />
     <orderEntry type="library" exported="" name="pickerview-2.0.8" level="project" />
     <orderEntry type="library" exported="" name="umeng_social_sdk" level="project" />
+    <orderEntry type="library" exported="" name="cardstack-1.0.2" level="project" />
     <orderEntry type="library" exported="" name="disklrucache-4.0.0-RC1" level="project" />
     <orderEntry type="library" exported="" name="renderscript-v8" level="project" />
     <orderEntry type="library" exported="" name="leakcanary-analyzer-1.5.1" level="project" />
