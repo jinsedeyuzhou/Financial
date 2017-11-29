@@ -6,12 +6,14 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * java判断字符串是否为数字或中文或字母
  * 
  * @author Administrator
+ *
  * 
  */
 public class StringUtil {
@@ -175,6 +177,22 @@ public class StringUtil {
 			}
 		}
 		return isGB2312;
+	}
+
+	/**
+	 * 是否是中文
+	 * @param str
+	 * @return
+	 */
+	public static boolean isContainChinese(String str) {
+
+		Pattern p=Pattern.compile("[u4e00-u9fa5]");
+		Matcher m=p.matcher(str);
+		if(m.find())
+		{
+			return true;
+		}
+		return false;
 	}
 
 	/**

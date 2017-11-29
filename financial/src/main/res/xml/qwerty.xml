@@ -54,6 +54,6 @@
         <Key android:keyWidth="14.999998%p" android:codes="46"
             android:keyLabel="." />
         <Key android:keyWidth="20.000004%p" android:codes="-3"
-            android:keyEdgeFlags="right" android:keyLabel="完成" />
+            android:keyEdgeFlags="right" android:keyLabel="完成"  />
     </Row>
 </Keyboard>

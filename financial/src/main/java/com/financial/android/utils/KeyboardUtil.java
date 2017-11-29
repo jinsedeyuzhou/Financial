@@ -33,6 +33,7 @@ public class KeyboardUtil {
         this.ed = edit;
         k1 = new Keyboard(ctx, R.xml.qwerty);
         k2 = new Keyboard(ctx, R.xml.symbols);
+
         keyboardView = (KeyboardView) act.findViewById(R.id.keyboard_view);
         keyboardView.setKeyboard(k1);
         keyboardView.setEnabled(true);
