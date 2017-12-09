@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 
 import com.financial.android.R;
+import com.financial.android.utils.SystemUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -164,6 +165,8 @@ public class CustomPopWindow extends PopupWindow {
         return this;
     }
 
+
+
     /**
      * 点击外部消失，由于弹出窗口时全屏，此设置无效 需要改变布局
      *
@@ -183,6 +186,10 @@ public class CustomPopWindow extends PopupWindow {
     public CustomPopWindow setTitle(String title) {
         if (title != null) {
             mTvTitle.setText(title);
+            mTvTitle.setVisibility(View.VISIBLE);
+        }else
+        {
+            mTvTitle.setVisibility(View.GONE);
         }
         return this;
     }
@@ -196,6 +203,30 @@ public class CustomPopWindow extends PopupWindow {
     public CustomPopWindow setData(List<String> strs) {
         if (strs != null)
             this.strs = strs;
+
+        popAdapter.notifyDataSetChanged();
+        return this;
+    }
+
+   /**
+     * 初始化数据
+     *
+     * @param strs
+     * @return
+     */
+    public CustomPopWindow setData(List<String> strs,boolean istrcrol) {
+        if (strs != null)
+            this.strs = strs;
+        if (istrcrol&&strs.size()>3)
+        {
+            ViewGroup.LayoutParams params = mGridViewPop.getLayoutParams();
+            // 设置高度
+            params.height = SystemUtils.getScreenHeight(mContext)/4;
+
+            // 设置margin
+            // 设置参数
+            mGridViewPop.setLayoutParams(params);
+        }
         popAdapter.notifyDataSetChanged();
         return this;
     }
@@ -221,7 +252,6 @@ public class CustomPopWindow extends PopupWindow {
     public CustomPopWindow setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListeners) {
         if (onItemClickListeners != null) {
             mGridViewPop.setOnItemClickListener(onItemClickListeners);
-            dismiss();
         }
         return this;
     }

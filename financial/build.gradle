@@ -36,6 +36,8 @@ dependencies {
     compile 'com.umeng.analytics:analytics:latest.integration'
     //    二级联动
     compile 'com.bigkoo:pickerview:2.0.8'
+    //三级联动
+    compile 'com.contrarywind:Android-PickerView:3.2.7'
     //okhttp
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile project(':refresh-footer')
