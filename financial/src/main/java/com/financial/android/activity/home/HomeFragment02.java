@@ -102,6 +102,7 @@ public class HomeFragment02 extends BaseFragment {
     private int mCurrPos;
 
     private List<HashMap<String, Object>> dataSourceList;
+    private TimerTask task;
 
 
     /**
@@ -204,12 +205,12 @@ public class HomeFragment02 extends BaseFragment {
                         startActivity(intent);
                         break;
                     case 8:
-                        intent=new Intent(ct, BannerActivity.class);
+                        intent = new Intent(ct, BannerActivity.class);
                         startActivity(intent);
                         break;
 
                     case 9:
-                        intent=new Intent(ct, IssueActivity.class);
+                        intent = new Intent(ct, IssueActivity.class);
                         startActivity(intent);
 
                     default:
@@ -238,6 +239,7 @@ public class HomeFragment02 extends BaseFragment {
         super.onStart();
     }
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -255,9 +257,16 @@ public class HomeFragment02 extends BaseFragment {
 
     }
 
+
     @Override
     public void onPause() {
         super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
     }
 
     @Override
@@ -354,7 +363,7 @@ public class HomeFragment02 extends BaseFragment {
                 .findViewById(R.id.homepage_notice_vf));
         main_notice.addView(notice_parent_ll);
 
-        TimerTask task = new TimerTask() {
+        task = new TimerTask() {
             @Override
             public void run() {
                 getActivity().runOnUiThread(new Runnable() {

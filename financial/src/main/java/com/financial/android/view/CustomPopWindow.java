@@ -12,7 +12,6 @@ import android.widget.GridView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-
 import com.financial.android.R;
 import com.financial.android.utils.SystemUtils;
 
@@ -222,7 +221,6 @@ public class CustomPopWindow extends PopupWindow {
             ViewGroup.LayoutParams params = mGridViewPop.getLayoutParams();
             // 设置高度
             params.height = SystemUtils.getScreenHeight(mContext)/4;
-
             // 设置margin
             // 设置参数
             mGridViewPop.setLayoutParams(params);
