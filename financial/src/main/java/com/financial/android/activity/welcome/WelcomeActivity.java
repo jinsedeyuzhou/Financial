@@ -10,6 +10,7 @@ import com.financial.android.R;
 import com.financial.android.activity.main.HomeActivity;
 import com.financial.android.base.BaseActivity;
 import com.financial.android.utils.SharePrefUtil;
+import com.financial.android.utils.StatusBarUtils;
 
 public class WelcomeActivity extends BaseActivity {
 
@@ -39,6 +40,7 @@ public class WelcomeActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.welcome);
+		StatusBarUtils.immersive(this);
 	}
 
 	@Override
