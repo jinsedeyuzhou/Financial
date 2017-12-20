@@ -45,6 +45,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
         <!-- main -->
         <activity android:name=".activity.main.HomeActivity"/>
         <activity android:name=".activity.other.WebViewActivity" />

@@ -23,7 +23,9 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youth.banner.Banner;
+import com.youth.banner.Transformer;
 import com.youth.banner.loader.ImageLoader;
+import com.youth.banner.transformer.CubeOutTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,6 +94,7 @@ public class BannerActivity extends BaseActivity {
         View header = LayoutInflater.from(this).inflate(R.layout.listitem_movie_header, recyclerView, false);
         Banner banner = (Banner) header;
         banner.setImageLoader(new GlideImageLoader());
+        banner.setBannerAnimation(Transformer.CubeOut);
         banner.setImages(BANNER_ITEMS);
         banner.start();
         mAdapter.addHeaderView(banner);

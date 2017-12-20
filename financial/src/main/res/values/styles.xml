@@ -20,7 +20,10 @@
         <item name="android:dividerHeight">@dimen/division_line</item>
         <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back_white_24dp</item>
     </style>
-
+    <!--可以设置闪屏页主题为SplashTheme,从而可以不用设置图片，另外这个属性会影响绘制可根据需要绘制-->
+    <style name="SplashTheme">
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+    </style>
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->

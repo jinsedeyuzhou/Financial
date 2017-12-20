@@ -5,6 +5,9 @@ import android.os.Build;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+/**
+ * 在华为mate9手机上有问题，需要对应机型发现问题，推测可能是view.getWidth()这个参数有问题或者和滑动速度有关，需要调整滑动速度
+ */
 public class RotateYTransformer extends BasePageTransformer
 {
     private static final float DEFAULT_MAX_ROTATE = 35f;

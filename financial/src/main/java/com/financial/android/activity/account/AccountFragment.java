@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.financial.android.R;
 import com.financial.android.activity.login.LoginActivity;
 import com.financial.android.activity.other.WebViewActivity;
+import com.financial.android.activity.welcome.GuideViewActivity;
 import com.financial.android.base.BaseFragment;
 import com.financial.android.utils.LogUtil;
 
@@ -58,7 +60,13 @@ public class AccountFragment extends BaseFragment {
         rl_account_wallet = (RelativeLayout) view.findViewById(R.id.rl_account_wallet);
         LogUtil.d("BaseFragment", "AccountFragment");
 
-
+        Button viewpager = (Button) view.findViewById(R.id.btn_viewpager);
+        viewpager.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), GuideViewActivity.class));
+            }
+        });
         rl_account_message.setOnClickListener(this);
         rl_account_setting.setOnClickListener(this);
         rl_account_wallet.setOnClickListener(this);

@@ -24,6 +24,7 @@ import com.financial.android.R;
 import com.financial.android.activity.main.HomeActivity;
 import com.financial.android.base.BaseActivity;
 import com.financial.android.utils.SharePrefUtil;
+import com.youth.banner.transformer.CubeOutTransformer;
 
 public class GuideViewActivity extends BaseActivity {
 
@@ -60,7 +61,7 @@ public class GuideViewActivity extends BaseActivity {
 				finish();
 			}
 		});
-
+		mViewPager.setPageTransformer(true, new CubeOutTransformer());
 	}
 
 	@Override

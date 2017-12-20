@@ -5,6 +5,9 @@ import android.os.Build;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+/**
+ *
+ */
 public class AlphaPageTransformer extends BasePageTransformer
 {
     private static final float DEFAULT_MIN_ALPHA = 0.5f;
